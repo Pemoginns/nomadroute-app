@@ -63,7 +63,10 @@ export function buildTransportAffiliateUrl(
   return `https://12go.asia/en/travel/${encodeURIComponent(fromName.toLowerCase())}/${encodeURIComponent(toName.toLowerCase())}`
 }
 
-export function buildHostelAffiliateUrl(destinationName: string): string {
+export function buildHostelAffiliateUrl(destinationName: string, hostelSlug?: string): string {
+  if (hostelSlug) {
+    return `https://www.hostelworld.com/hosteldetails.php/${encodeURIComponent(hostelSlug)}`
+  }
   return `https://www.hostelworld.com/findabed.php/ChosenCity.${encodeURIComponent(destinationName)}`
 }
 

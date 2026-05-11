@@ -36,8 +36,9 @@ export function RouteTimeline({ route }: RouteTimelineProps) {
 function StopCard({ stop, index }: { stop: RouteStop; index: number }) {
   const [expanded, setExpanded] = useState(index === 0)
 
-  const hostelUrl = stop.hostelSuggestion?.affiliateUrl
-    ?? buildHostelAffiliateUrl(stop.destination.name)
+  const hostelUrl = stop.hostelSuggestion?.slug
+    ? buildHostelAffiliateUrl(stop.destination.name, stop.hostelSuggestion.slug)
+    : buildHostelAffiliateUrl(stop.destination.name)
 
   return (
     <FadeIn delay={index * 80} direction="right" className="relative pl-8">
