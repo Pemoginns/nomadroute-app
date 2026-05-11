@@ -15,11 +15,11 @@ interface RouteCardProps {
 
 export function RouteCard({ route, index = 0 }: RouteCardProps) {
   return (
-    <FadeIn delay={index * 50} direction="up">
-      <Link href={`/routes/${route.slug}`} className="group block">
-        <div className="relative overflow-hidden rounded-2xl border border-white/8 bg-bg-elevated transition-all duration-300 hover:border-white/15 hover:shadow-elevated hover:-translate-y-1">
+    <FadeIn delay={index * 50} direction="up" className="h-full">
+      <Link href={`/routes/${route.slug}`} className="group block h-full">
+        <div className="relative overflow-hidden rounded-2xl border border-white/8 bg-bg-elevated transition-all duration-300 hover:border-white/15 hover:shadow-elevated hover:-translate-y-1 flex flex-col h-full">
           {/* Cover image */}
-          <div className="relative h-44 overflow-hidden">
+          <div className="relative aspect-square overflow-hidden flex-shrink-0">
             <Image
               src={route.coverImage}
               alt={route.title}
@@ -56,7 +56,7 @@ export function RouteCard({ route, index = 0 }: RouteCardProps) {
           </div>
 
           {/* Content */}
-          <div className="p-4 space-y-3">
+          <div className="p-4 space-y-3 flex flex-col flex-1">
             <div>
               <h3 className="font-semibold text-white group-hover:text-brand-300 transition-colors line-clamp-1">
                 {route.title}

@@ -24,7 +24,7 @@ export const FEATURED_ROUTES: FeaturedRoute[] = [
     title: '4 Weeks in SEA for €400',
     subtitle: 'Bangkok → Siem Reap → Hanoi → Bali',
     emoji: '🌏',
-    coverImage: 'https://images.unsplash.com/photo-1537996194471-e657df975ab4?w=1200',
+    coverImage: 'https://images.unsplash.com/photo-1552465011-b4e21bf6e79a?w=1200',
     countries: ['Thailand', 'Cambodia', 'Vietnam', 'Indonesia'],
     durationDays: 28,
     budgetFrom: 400,

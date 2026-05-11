@@ -19,7 +19,7 @@ html {
 }
 
 body {
-  background-color: #080810;
+  background-color: #000000;
   color: #f1f5f9;
   font-family: var(--font-inter);
   -webkit-font-smoothing: antialiased;
@@ -44,7 +44,7 @@ body {
 
 /* Selection */
 ::selection {
-  background: rgba(99, 102, 241, 0.3);
+  background: rgba(234, 179, 8, 0.3);
   color: white;
 }
 
@@ -62,7 +62,7 @@ body {
   }
 
   .gradient-text {
-    background: linear-gradient(135deg, #6366f1, #8b5cf6, #06b6d4);
+    background: linear-gradient(135deg, #eab308, #facc15, #fde047);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     background-clip: text;
@@ -103,7 +103,7 @@ body {
 
 /* Custom select */
 select option {
-  background-color: #0F0F1A;
+  background-color: #0a0a0a;
   color: #f1f5f9;
 }
 
@@ -116,7 +116,7 @@ select option {
 
 /* Focus visible ring */
 *:focus-visible {
-  outline: 2px solid rgba(99, 102, 241, 0.6);
+  outline: 2px solid rgba(234, 179, 8, 0.6);
   outline-offset: 2px;
 }
 

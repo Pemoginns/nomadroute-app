@@ -97,8 +97,8 @@ export default function HomePage() {
           >
             <defs>
               <radialGradient id="glow1" cx="50%" cy="50%" r="50%">
-                <stop offset="0%" stopColor="#6366f1" stopOpacity="0.3" />
-                <stop offset="100%" stopColor="#6366f1" stopOpacity="0" />
+                <stop offset="0%" stopColor="#eab308" stopOpacity="0.3" />
+                <stop offset="100%" stopColor="#eab308" stopOpacity="0" />
               </radialGradient>
             </defs>
             {/* Dot grid via SVG pattern — 6 nodes instead of 1000 */}
@@ -134,8 +134,8 @@ export default function HomePage() {
               { cx: 1100, cy: 320, label: 'Singapore' },
             ].map(({ cx, cy, label }) => (
               <g key={label}>
-                <circle cx={cx} cy={cy} r="6" fill="#6366f1" opacity="0.8" />
-                <circle cx={cx} cy={cy} r="12" fill="#6366f1" opacity="0.2" className="animate-ping-slow" />
+                <circle cx={cx} cy={cy} r="6" fill="#eab308" opacity="0.9" />
+                <circle cx={cx} cy={cy} r="12" fill="#eab308" opacity="0.2" className="animate-ping-slow" />
                 <text x={cx + 16} y={cy + 4} fontSize="11" fill="rgba(255,255,255,0.5)" fontFamily="Inter">{label}</text>
               </g>
             ))}
