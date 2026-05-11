@@ -1,0 +1,212 @@
+// NomadRoute Database Schema
+// PostgreSQL via Prisma ORM
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+// ─── Users & Auth ────────────────────────────────────────────────────────────
+
+model User {
+  id            String    @id @default(cuid())
+  email         String    @unique
+  emailVerified DateTime?
+  name          String?
+  username      String?   @unique
+  avatar        String?
+  bio           String?
+  nationality   String?
+  travelStyle   String?
+  isPremium     Boolean   @default(false)
+  premiumUntil  DateTime?
+  createdAt     DateTime  @default(now())
+  updatedAt     DateTime  @updatedAt
+
+  accounts      Account[]
+  sessions      Session[]
+  savedRoutes   SavedRoute[]
+  generatedRoutes GeneratedRoute[]
+  affiliateClicks AffiliateClick[]
+
+  @@index([email])
+}
+
+model Account {
+  id                String  @id @default(cuid())
+  userId            String
+  type              String
+  provider          String
+  providerAccountId String
+  refresh_token     String? @db.Text
+  access_token      String? @db.Text
+  expires_at        Int?
+  token_type        String?
+  scope             String?
+  id_token          String? @db.Text
+  session_state     String?
+  user              User    @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@unique([provider, providerAccountId])
+}
+
+model Session {
+  id           String   @id @default(cuid())
+  sessionToken String   @unique
+  userId       String
+  expires      DateTime
+  user         User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+}
+
+// ─── Routes & Itineraries ────────────────────────────────────────────────────
+
+model GeneratedRoute {
+  id             String   @id @default(cuid())
+  userId         String?
+  shareSlug      String   @unique @default(cuid())
+  isPublic       Boolean  @default(false)
+  isFeatured     Boolean  @default(false)
+  title          String
+  description    String?
+  startLocation  String
+  endLocation    String
+  startDate      DateTime?
+  endDate        DateTime?
+  durationDays   Int
+  budgetMin      Int      // in USD cents
+  budgetMax      Int
+  travelStyle    String
+  countries      String[]
+  stops          Json     // Array of RouteStop objects
+  transportLegs  Json     // Array of TransportLeg objects
+  totalDistance  Float?   // km
+  viewCount      Int      @default(0)
+  shareCount     Int      @default(0)
+  createdAt      DateTime @default(now())
+  updatedAt      DateTime @updatedAt
+
+  user           User?    @relation(fields: [userId], references: [id])
+  savedBy        SavedRoute[]
+
+  @@index([shareSlug])
+  @@index([isPublic, isFeatured])
+  @@index([travelStyle])
+}
+
+model SavedRoute {
+  id        String   @id @default(cuid())
+  userId    String
+  routeId   String
+  createdAt DateTime @default(now())
+
+  user  User           @relation(fields: [userId], references: [id], onDelete: Cascade)
+  route GeneratedRoute @relation(fields: [routeId], references: [id], onDelete: Cascade)
+
+  @@unique([userId, routeId])
+}
+
+// ─── Destinations ────────────────────────────────────────────────────────────
+
+model Destination {
+  id          String  @id @default(cuid())
+  slug        String  @unique
+  name        String
+  country     String
+  countryCode String
+  region      String
+  lat         Float
+  lng         Float
+  timezone    String
+  currency    String
+  description String?
+  heroImage   String?
+  tags        String[]
+  avgDailyBudgetUsd Int // in cents
+  visaInfo    Json?
+  isActive    Boolean @default(true)
+  createdAt   DateTime @default(now())
+
+  hostels     Hostel[]
+
+  @@index([country])
+  @@index([slug])
+}
+
+// ─── Hostels ─────────────────────────────────────────────────────────────────
+
+model Hostel {
+  id              String  @id @default(cuid())
+  externalId      String?
+  provider        String  // hostelworld, booking
+  name            String
+  slug            String  @unique
+  destinationId   String
+  lat             Float
+  lng             Float
+  address         String?
+  description     String?
+  heroImage       String?
+  images          String[]
+  rating          Float?
+  reviewCount     Int     @default(0)
+  pricePerNightUsd Int    // in cents
+  dormAvailable   Boolean @default(true)
+  privateAvailable Boolean @default(false)
+  amenities       String[]
+  affiliateUrl    String?
+  isSponsored     Boolean @default(false)
+  isActive        Boolean @default(true)
+  createdAt       DateTime @default(now())
+  updatedAt       DateTime @updatedAt
+
+  destination Destination @relation(fields: [destinationId], references: [id])
+
+  @@index([destinationId])
+  @@index([provider])
+}
+
+// ─── Transport ───────────────────────────────────────────────────────────────
+
+model TransportRoute {
+  id             String  @id @default(cuid())
+  fromId         String
+  toId           String
+  transportType  String  // bus, train, ferry, flight, van
+  provider       String?
+  durationHours  Float
+  priceUsdMin    Int     // cents
+  priceUsdMax    Int     // cents
+  frequency      String? // daily, twice-daily, weekly
+  isSleeper      Boolean @default(false)
+  isPopular      Boolean @default(false)
+  affiliateUrl   String?
+  notes          String?
+  isActive       Boolean @default(true)
+  createdAt      DateTime @default(now())
+
+  @@index([fromId, toId])
+  @@index([transportType])
+}
+
+// ─── Affiliate Tracking ──────────────────────────────────────────────────────
+
+model AffiliateClick {
+  id         String   @id @default(cuid())
+  userId     String?
+  sessionId  String?
+  partner    String   // hostelworld, booking, kiwi, skyscanner, etc.
+  routeId    String?
+  targetUrl  String
+  revenue    Float?   // estimated commission
+  converted  Boolean  @default(false)
+  createdAt  DateTime @default(now())
+
+  user User? @relation(fields: [userId], references: [id])
+
+  @@index([partner])
+  @@index([createdAt])
+}
