@@ -61,6 +61,13 @@ body {
     border-color: rgba(255, 255, 255, 0.12);
   }
 
+  .glass-card {
+    background: rgba(0, 0, 0, 0.6);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+  }
+
   .gradient-text {
     background: linear-gradient(135deg, #eab308, #facc15, #fde047);
     -webkit-background-clip: text;
@@ -75,6 +82,13 @@ body {
     background-clip: text;
   }
 
+  .gradient-text-white {
+    background: linear-gradient(135deg, #ffffff, #cbd5e1);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+
   .noise-bg {
     background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.03'/%3E%3C/svg%3E");
   }
@@ -84,6 +98,85 @@ body {
     stroke-dashoffset: 1000;
     animation: routeDraw 2s ease-in-out forwards;
   }
+
+  .glow-brand {
+    box-shadow: 0 0 30px rgba(234, 179, 8, 0.25), 0 0 60px rgba(234, 179, 8, 0.1);
+  }
+
+  .glow-brand-sm {
+    box-shadow: 0 0 15px rgba(234, 179, 8, 0.2);
+  }
+
+  .card-hover {
+    transition: transform 0.2s ease, border-color 0.2s ease, box-shadow 0.2s ease;
+  }
+
+  .card-hover:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.5);
+  }
+
+  .dot-grid {
+    background-image: radial-gradient(circle, rgba(255,255,255,0.08) 1px, transparent 1px);
+    background-size: 28px 28px;
+  }
+
+  .generation-step {
+    animation: stepFadeIn 0.4s ease-out forwards;
+    opacity: 0;
+  }
+}
+
+/* Hero image parallax */
+.hero-img {
+  will-change: transform;
+}
+
+/* Ping animation for map dots */
+@keyframes ping-map {
+  0% { transform: scale(1); opacity: 0.8; }
+  70% { transform: scale(2.5); opacity: 0; }
+  100% { transform: scale(2.5); opacity: 0; }
+}
+
+/* Step fade-in */
+@keyframes stepFadeIn {
+  from { opacity: 0; transform: translateX(-8px); }
+  to { opacity: 1; transform: translateX(0); }
+}
+
+/* Glow pulse for brand elements */
+@keyframes glowPulse {
+  0%, 100% { box-shadow: 0 0 20px rgba(234, 179, 8, 0.2); }
+  50% { box-shadow: 0 0 40px rgba(234, 179, 8, 0.5), 0 0 80px rgba(234, 179, 8, 0.2); }
+}
+
+/* Float animations with different timings */
+@keyframes floatA {
+  0%, 100% { transform: translateY(0px) rotate(-1.5deg); }
+  50% { transform: translateY(-14px) rotate(0.5deg); }
+}
+
+@keyframes floatB {
+  0%, 100% { transform: translateY(0px) rotate(1deg); }
+  50% { transform: translateY(-10px) rotate(-1deg); }
+}
+
+@keyframes floatC {
+  0%, 100% { transform: translateY(-6px) rotate(0.5deg); }
+  50% { transform: translateY(6px) rotate(-0.5deg); }
+}
+
+/* Shimmer effect for skeleton/loading */
+@keyframes shimmerMove {
+  from { background-position: -1000px 0; }
+  to { background-position: 1000px 0; }
+}
+
+.shimmer {
+  background: linear-gradient(90deg, transparent, rgba(255,255,255,0.04), transparent);
+  background-size: 1000px 100%;
+  animation: shimmerMove 2s linear infinite;
 }
 
 /* Mapbox overrides */

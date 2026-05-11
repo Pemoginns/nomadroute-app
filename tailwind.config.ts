@@ -57,8 +57,11 @@ const config: Config = {
         'gradient-hero': 'linear-gradient(135deg, #000000 0%, #0a0a0a 50%, #000000 100%)',
         'gradient-brand': 'linear-gradient(135deg, #eab308 0%, #facc15 100%)',
         'gradient-glow': 'radial-gradient(ellipse at center, rgba(234, 179, 8, 0.15) 0%, transparent 70%)',
+        'gradient-glow-top': 'radial-gradient(ellipse at top, rgba(234, 179, 8, 0.12) 0%, transparent 60%)',
+        'gradient-glow-bottom': 'radial-gradient(ellipse at bottom, rgba(99, 102, 241, 0.12) 0%, transparent 60%)',
         'glass-border': 'linear-gradient(135deg, rgba(255,255,255,0.1) 0%, rgba(255,255,255,0.02) 100%)',
         'card-shine': 'linear-gradient(135deg, rgba(255,255,255,0.05) 0%, transparent 50%)',
+        'gradient-pricing': 'linear-gradient(135deg, rgba(234,179,8,0.15) 0%, rgba(251,191,36,0.05) 100%)',
       },
       boxShadow: {
         'glass': '0 8px 32px rgba(0, 0, 0, 0.3), inset 0 1px 0 rgba(255,255,255,0.05)',
@@ -70,6 +73,9 @@ const config: Config = {
       },
       animation: {
         'float': 'float 6s ease-in-out infinite',
+        'float-a': 'floatA 7s ease-in-out infinite',
+        'float-b': 'floatB 9s ease-in-out infinite',
+        'float-c': 'floatC 11s ease-in-out infinite',
         'pulse-slow': 'pulse 4s ease-in-out infinite',
         'slide-up': 'slideUp 0.5s ease-out',
         'slide-down': 'slideDown 0.5s ease-out',
@@ -78,11 +84,25 @@ const config: Config = {
         'ping-slow': 'ping 3s ease-in-out infinite',
         'shimmer': 'shimmer 2s linear infinite',
         'marquee': 'marquee 25s linear infinite',
+        'glow-pulse': 'glowPulse 3s ease-in-out infinite',
+        'step-in': 'stepFadeIn 0.4s ease-out forwards',
       },
       keyframes: {
         float: {
           '0%, 100%': { transform: 'translateY(0px)' },
           '50%': { transform: 'translateY(-10px)' },
+        },
+        floatA: {
+          '0%, 100%': { transform: 'translateY(0px) rotate(-1.5deg)' },
+          '50%': { transform: 'translateY(-14px) rotate(0.5deg)' },
+        },
+        floatB: {
+          '0%, 100%': { transform: 'translateY(0px) rotate(1deg)' },
+          '50%': { transform: 'translateY(-10px) rotate(-1deg)' },
+        },
+        floatC: {
+          '0%, 100%': { transform: 'translateY(-6px) rotate(0.5deg)' },
+          '50%': { transform: 'translateY(6px) rotate(-0.5deg)' },
         },
         slideUp: {
           '0%': { transform: 'translateY(20px)', opacity: '0' },
@@ -107,6 +127,14 @@ const config: Config = {
         marquee: {
           '0%': { transform: 'translateX(0%)' },
           '100%': { transform: 'translateX(-50%)' },
+        },
+        glowPulse: {
+          '0%, 100%': { boxShadow: '0 0 20px rgba(234, 179, 8, 0.2)' },
+          '50%': { boxShadow: '0 0 40px rgba(234, 179, 8, 0.5), 0 0 80px rgba(234, 179, 8, 0.15)' },
+        },
+        stepFadeIn: {
+          '0%': { opacity: '0', transform: 'translateX(-8px)' },
+          '100%': { opacity: '1', transform: 'translateX(0)' },
         },
       },
       backdropBlur: {

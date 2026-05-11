@@ -126,7 +126,7 @@ export const FEATURED_ROUTES: FeaturedRoute[] = [
     title: 'Malaysia Food Trail',
     subtitle: 'The ultimate hawker food journey',
     emoji: '🍜',
-    coverImage: 'https://images.unsplash.com/photo-1570383699487-82f09c0d0b5c?w=1200',
+    coverImage: 'https://images.unsplash.com/photo-1562802378-063ec186a863?w=1200',
     countries: ['Malaysia'],
     durationDays: 8,
     budgetFrom: 280,

@@ -2,8 +2,7 @@
 
 import Link from 'next/link'
 import Image from 'next/image'
-import { Heart, Clock, Wallet, TrendingUp, Sparkles } from 'lucide-react'
-import { Badge } from '@/components/ui/Badge'
+import { Heart, Clock, Wallet, TrendingUp, Sparkles, MapPin } from 'lucide-react'
 import { FadeIn } from '@/components/ui/FadeIn'
 import { cn } from '@/lib/utils/cn'
 import type { FeaturedRoute } from '@/lib/types'
@@ -17,76 +16,88 @@ export function RouteCard({ route, index = 0 }: RouteCardProps) {
   return (
     <FadeIn delay={index * 50} direction="up" className="h-full">
       <Link href={`/routes/${route.slug}`} className="group block h-full">
-        <div className="relative overflow-hidden rounded-2xl border border-white/8 bg-bg-elevated transition-all duration-300 hover:border-white/15 hover:shadow-elevated hover:-translate-y-1 flex flex-col h-full">
-          {/* Cover image */}
+        <div className="relative overflow-hidden rounded-2xl border border-white/8 bg-bg-elevated flex flex-col h-full transition-all duration-300 hover:border-white/20 hover:-translate-y-1.5 hover:shadow-elevated">
+
+          {/* Image */}
           <div className="relative aspect-square overflow-hidden flex-shrink-0">
             <Image
               src={route.coverImage}
               alt={route.title}
               fill
-              priority={index === 0}
-              className="object-cover transition-transform duration-500 group-hover:scale-105"
-              sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+              priority={index < 2}
+              className="object-cover transition-transform duration-700 group-hover:scale-108"
+              sizes="(max-width: 640px) 50vw, (max-width: 1200px) 25vw, 20vw"
             />
-            <div className="absolute inset-0 bg-gradient-to-t from-bg-elevated via-bg-elevated/20 to-transparent" />
 
-            {/* Badges */}
-            <div className="absolute top-3 left-3 flex gap-2">
+            {/* Gradient overlays */}
+            <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/30 to-transparent" />
+            <div className="absolute inset-0 bg-gradient-to-br from-black/20 to-transparent" />
+
+            {/* Top badges */}
+            <div className="absolute top-3 left-3 flex gap-1.5 flex-wrap">
               {route.isTrending && (
-                <span className="flex items-center gap-1 rounded-full bg-orange-500/90 px-2.5 py-1 text-xs font-semibold text-white backdrop-blur-sm">
-                  <TrendingUp className="h-3 w-3" />
-                  Trending
+                <span className="flex items-center gap-1 rounded-full bg-orange-500/95 backdrop-blur-sm px-2.5 py-0.5 text-xs font-bold text-white shadow-lg">
+                  🔥 Hot
                 </span>
               )}
               {route.isNew && (
-                <span className="flex items-center gap-1 rounded-full bg-brand-500/90 px-2.5 py-1 text-xs font-semibold text-white backdrop-blur-sm">
-                  <Sparkles className="h-3 w-3" />
-                  New
+                <span className="flex items-center gap-1 rounded-full bg-brand-500/95 backdrop-blur-sm px-2.5 py-0.5 text-xs font-bold text-black shadow-lg">
+                  ✨ New
                 </span>
               )}
               {route.isCheapest && (
-                <span className="flex items-center gap-1 rounded-full bg-green-600/90 px-2.5 py-1 text-xs font-semibold text-white backdrop-blur-sm">
-                  💰 Budget pick
+                <span className="rounded-full bg-emerald-500/95 backdrop-blur-sm px-2.5 py-0.5 text-xs font-bold text-white shadow-lg">
+                  💰 Budget
                 </span>
               )}
             </div>
 
-            {/* Emoji */}
-            <div className="absolute bottom-3 right-3 text-3xl">{route.emoji}</div>
+            {/* Save count — top right */}
+            <div className="absolute top-3 right-3 flex items-center gap-1 rounded-full bg-black/50 backdrop-blur-sm px-2 py-1">
+              <Heart className="h-3 w-3 text-rose-400" />
+              <span className="text-xs text-white font-medium">{(route.saves / 1000).toFixed(1)}k</span>
+            </div>
+
+            {/* Bottom image overlay — budget + duration */}
+            <div className="absolute bottom-0 left-0 right-0 p-3.5">
+              <div className="flex items-end justify-between">
+                <div>
+                  <p className="text-xs text-white/50 leading-none mb-1">{route.durationDays} days</p>
+                  <p className="text-2xl font-black text-white leading-none">
+                    from ${route.budgetFrom}
+                  </p>
+                </div>
+                <div className="text-3xl leading-none">{route.emoji}</div>
+              </div>
+            </div>
           </div>
 
-          {/* Content */}
-          <div className="p-4 space-y-3 flex flex-col flex-1">
-            <div>
-              <h3 className="font-semibold text-white group-hover:text-brand-300 transition-colors line-clamp-1">
-                {route.title}
-              </h3>
-              <p className="text-sm text-slate-400 mt-0.5 line-clamp-1">{route.subtitle}</p>
-            </div>
-
-            {/* Stats row */}
-            <div className="flex items-center gap-4 text-xs text-slate-500">
-              <span className="flex items-center gap-1">
-                <Clock className="h-3 w-3" />
-                {route.durationDays} days
-              </span>
-              <span className="flex items-center gap-1 text-emerald-400 font-medium">
-                <Wallet className="h-3 w-3" />
-                from ${route.budgetFrom}
-              </span>
-              <span className="flex items-center gap-1 ml-auto">
-                <Heart className="h-3 w-3" />
-                {route.saves.toLocaleString()}
-              </span>
-            </div>
+          {/* Text content */}
+          <div className="p-4 flex flex-col flex-1">
+            <h3 className={cn(
+              'font-bold text-sm text-white leading-tight mb-0.5 transition-colors',
+              'group-hover:text-brand-400',
+            )}>
+              {route.title}
+            </h3>
+            <p className="text-xs text-slate-500 line-clamp-1 flex-1 mb-3">
+              {route.subtitle}
+            </p>
 
             {/* Countries */}
-            <div className="flex flex-wrap gap-1.5">
+            <div className="flex flex-wrap gap-1">
               {route.countries.slice(0, 3).map((c) => (
-                <Badge key={c} variant="default" size="sm">{c}</Badge>
+                <span
+                  key={c}
+                  className="text-xs rounded-full border border-white/10 bg-white/5 px-2 py-0.5 text-slate-400"
+                >
+                  {c}
+                </span>
               ))}
               {route.countries.length > 3 && (
-                <Badge variant="default" size="sm">+{route.countries.length - 3}</Badge>
+                <span className="text-xs text-slate-600 self-center">
+                  +{route.countries.length - 3} more
+                </span>
               )}
             </div>
           </div>
