@@ -32,7 +32,7 @@ export function Navbar() {
         className={cn(
           'fixed top-0 left-0 right-0 z-50 transition-all duration-300',
           scrolled
-            ? 'border-b border-white/20 bg-black/40 backdrop-blur-xl'
+            ? 'border-b border-gray-200 bg-white shadow-sm'
             : 'bg-transparent',
         )}
       >
@@ -46,8 +46,8 @@ export function Navbar() {
             )}>
               <Globe className="h-4 w-4 text-black" strokeWidth={2.5} />
             </div>
-            <span className="text-lg font-black text-white tracking-tight">
-              Nomad<span className="text-brand-400">Route</span>
+            <span className={cn('text-lg font-black tracking-tight', scrolled ? 'text-slate-900' : 'text-white')}>
+              Nomad<span className={scrolled ? 'text-brand-600' : 'text-brand-400'}>Route</span>
             </span>
           </Link>
 
@@ -63,9 +63,9 @@ export function Navbar() {
                   className={cn(
                     'flex items-center gap-1.5 rounded-lg px-3 py-2 text-sm font-medium transition-colors',
                     isActive
-                      ? 'bg-white/10 text-white'
-                      : 'text-slate-400 hover:text-white hover:bg-white/5',
-                    isPricing && !isActive && 'text-brand-400 hover:text-brand-300',
+                      ? scrolled ? 'bg-gray-100 text-slate-900' : 'bg-white/10 text-white'
+                      : scrolled ? 'text-slate-600 hover:text-slate-900 hover:bg-gray-100' : 'text-white/80 hover:text-white hover:bg-white/10',
+                    isPricing && !isActive && (scrolled ? 'text-brand-600' : 'text-brand-300'),
                   )}
                 >
                   {isPricing && <Star className="h-3.5 w-3.5" />}

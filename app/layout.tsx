@@ -51,13 +51,13 @@ export const metadata: Metadata = {
 export const viewport: Viewport = {
   width: 'device-width',
   initialScale: 1,
-  themeColor: '#000000',
+  themeColor: '#ffffff',
 }
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
-    <html lang="en" className="dark">
-      <body className="bg-bg-base text-white antialiased">
+    <html lang="en">
+      <body className="bg-bg-base text-slate-900 antialiased">
         <Navbar />
         <main>{children}</main>
         <Footer />

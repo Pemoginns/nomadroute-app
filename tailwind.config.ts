@@ -11,10 +11,10 @@ const config: Config = {
     extend: {
       colors: {
         bg: {
-          base: '#000000',
-          surface: '#0a0a0a',
-          elevated: '#111111',
-          overlay: '#1a1a1a',
+          base: '#f9fafb',
+          surface: '#ffffff',
+          elevated: '#ffffff',
+          overlay: '#f3f4f6',
         },
         brand: {
           50: '#fefce8',
