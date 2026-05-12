@@ -12,15 +12,15 @@ const buttonVariants = cva(
         primary:
           'bg-gradient-to-r from-brand-500 to-violet-600 text-white shadow-glow-sm hover:shadow-glow hover:brightness-110',
         secondary:
-          'bg-bg-elevated border border-white/10 text-slate-200 hover:bg-bg-overlay hover:border-white/20',
+          'bg-white border border-gray-200 text-slate-700 hover:bg-gray-50 hover:border-gray-300',
         ghost:
-          'text-slate-400 hover:text-slate-200 hover:bg-white/5',
+          'text-slate-500 hover:text-slate-700 hover:bg-gray-100',
         danger:
-          'bg-red-500/10 border border-red-500/30 text-red-400 hover:bg-red-500/20',
+          'bg-red-50 border border-red-200 text-red-600 hover:bg-red-100',
         outline:
-          'border border-brand-500/50 text-brand-400 hover:bg-brand-500/10',
+          'border border-brand-500/50 text-brand-600 hover:bg-brand-50',
         glass:
-          'bg-white/5 backdrop-blur-sm border border-white/10 text-white hover:bg-white/10',
+          'bg-white border border-gray-200 text-slate-700 hover:bg-gray-50 hover:border-gray-300',
       },
       size: {
         xs: 'h-7 px-3 text-xs',

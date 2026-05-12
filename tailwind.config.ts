@@ -64,12 +64,12 @@ const config: Config = {
         'gradient-pricing': 'linear-gradient(135deg, rgba(234,179,8,0.15) 0%, rgba(251,191,36,0.05) 100%)',
       },
       boxShadow: {
-        'glass': '0 8px 32px rgba(0, 0, 0, 0.3), inset 0 1px 0 rgba(255,255,255,0.05)',
+        'glass': '0 8px 32px rgba(0, 0, 0, 0.08), inset 0 1px 0 rgba(255,255,255,0.8)',
         'glow-sm': '0 0 15px rgba(234, 179, 8, 0.3)',
         'glow': '0 0 30px rgba(234, 179, 8, 0.4)',
         'glow-lg': '0 0 60px rgba(234, 179, 8, 0.3)',
-        'card': '0 4px 24px rgba(0, 0, 0, 0.4)',
-        'elevated': '0 8px 48px rgba(0, 0, 0, 0.5)',
+        'card': '0 4px 24px rgba(0, 0, 0, 0.08)',
+        'elevated': '0 8px 48px rgba(0, 0, 0, 0.12)',
       },
       animation: {
         'float': 'float 6s ease-in-out infinite',

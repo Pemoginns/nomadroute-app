@@ -4,9 +4,10 @@ import { useState, useEffect } from 'react'
 import Link from 'next/link'
 import { usePathname } from 'next/navigation'
 import { motion, AnimatePresence } from 'framer-motion'
-import { Map, Compass, BookOpen, Star, Menu, X, Zap, Globe } from 'lucide-react'
+import { Map, Compass, BookOpen, Star, Menu, X, Zap, Globe, Sun, Moon } from 'lucide-react'
 import { Button } from '@/components/ui/Button'
 import { cn } from '@/lib/utils/cn'
+import { useTheme } from '@/components/providers/ThemeProvider'
 
 const NAV_LINKS = [
   { href: '/plan', label: 'Plan Route', icon: Compass },
@@ -19,6 +20,7 @@ export function Navbar() {
   const [scrolled, setScrolled] = useState(false)
   const [mobileOpen, setMobileOpen] = useState(false)
   const pathname = usePathname()
+  const { theme, toggle } = useTheme()
 
   useEffect(() => {
     const handler = () => setScrolled(window.scrollY > 20)
@@ -30,10 +32,8 @@ export function Navbar() {
     <>
       <header
         className={cn(
-          'fixed top-0 left-0 right-0 z-50 transition-all duration-300',
-          scrolled
-            ? 'border-b border-gray-200 bg-white shadow-sm'
-            : 'bg-transparent',
+          'fixed top-0 left-0 right-0 z-50 transition-all duration-300 bg-white dark:bg-gray-900',
+          scrolled ? 'border-b border-gray-200 dark:border-gray-800 shadow-sm' : 'border-b border-gray-100 dark:border-gray-800/50',
         )}
       >
         <nav className="mx-auto flex h-16 max-w-7xl items-center justify-between px-4 sm:px-6 lg:px-8">
@@ -46,8 +46,8 @@ export function Navbar() {
             )}>
               <Globe className="h-4 w-4 text-black" strokeWidth={2.5} />
             </div>
-            <span className={cn('text-lg font-black tracking-tight', scrolled ? 'text-slate-900' : 'text-white')}>
-              Nomad<span className={scrolled ? 'text-brand-600' : 'text-brand-400'}>Route</span>
+            <span className="text-lg font-black tracking-tight text-slate-900">
+              Nomad<span className="text-brand-600">Route</span>
             </span>
           </Link>
 
@@ -63,9 +63,9 @@ export function Navbar() {
                   className={cn(
                     'flex items-center gap-1.5 rounded-lg px-3 py-2 text-sm font-medium transition-colors',
                     isActive
-                      ? scrolled ? 'bg-gray-100 text-slate-900' : 'bg-white/10 text-white'
-                      : scrolled ? 'text-slate-600 hover:text-slate-900 hover:bg-gray-100' : 'text-white/80 hover:text-white hover:bg-white/10',
-                    isPricing && !isActive && (scrolled ? 'text-brand-600' : 'text-brand-300'),
+                      ? 'bg-gray-100 text-slate-900'
+                      : 'text-slate-600 hover:text-slate-900 hover:bg-gray-100',
+                    isPricing && !isActive && 'text-brand-600',
                   )}
                 >
                   {isPricing && <Star className="h-3.5 w-3.5" />}
@@ -76,7 +76,17 @@ export function Navbar() {
           </div>
 
           {/* Desktop CTA */}
-          <div className="hidden md:flex items-center gap-3">
+          <div className="hidden md:flex items-center gap-2">
+            {/* Theme toggle */}
+            <button
+              onClick={toggle}
+              aria-label={theme === 'dark' ? 'Switch to light mode' : 'Switch to dark mode'}
+              className="rounded-lg p-2 text-slate-500 hover:text-slate-900 dark:text-slate-400 dark:hover:text-white hover:bg-gray-100 dark:hover:bg-gray-800 transition-colors"
+            >
+              {theme === 'dark'
+                ? <Sun className="h-4.5 w-4.5" />
+                : <Moon className="h-4.5 w-4.5" />}
+            </button>
             <Link href="/login">
               <Button variant="ghost" size="sm">Sign in</Button>
             </Link>
@@ -90,7 +100,7 @@ export function Navbar() {
 
           {/* Mobile hamburger */}
           <button
-            className="md:hidden rounded-lg p-2 text-slate-400 hover:text-white hover:bg-white/5 transition-colors"
+            className="md:hidden rounded-lg p-2 text-slate-500 hover:text-slate-700 hover:bg-gray-100 transition-colors"
             onClick={() => setMobileOpen(true)}
             aria-label="Open menu"
           >
@@ -115,15 +125,15 @@ export function Navbar() {
               animate={{ x: 0 }}
               exit={{ x: '100%' }}
               transition={{ type: 'spring', damping: 28, stiffness: 320 }}
-              className="fixed right-0 top-0 bottom-0 z-50 w-72 bg-bg-surface border-l border-white/8 p-6 md:hidden flex flex-col"
+              className="fixed right-0 top-0 bottom-0 z-50 w-72 bg-white dark:bg-gray-900 border-l border-gray-200 dark:border-gray-800 p-6 md:hidden flex flex-col shadow-xl"
             >
               <div className="flex items-center justify-between mb-8">
-                <span className="text-lg font-black text-white">
-                  Nomad<span className="text-brand-400">Route</span>
+                <span className="text-lg font-black text-slate-900">
+                  Nomad<span className="text-brand-600">Route</span>
                 </span>
                 <button
                   onClick={() => setMobileOpen(false)}
-                  className="rounded-lg p-2 text-slate-400 hover:text-white hover:bg-white/5 transition-colors"
+                  className="rounded-lg p-2 text-slate-500 hover:text-slate-700 hover:bg-gray-100 transition-colors"
                 >
                   <X className="h-5 w-5" />
                 </button>
@@ -138,9 +148,9 @@ export function Navbar() {
                     className={cn(
                       'flex items-center gap-3 rounded-xl px-4 py-3 text-sm font-medium transition-colors',
                       pathname === link.href
-                        ? 'bg-white/10 text-white'
-                        : 'text-slate-400 hover:text-white hover:bg-white/5',
-                      link.href === '/pricing' && pathname !== '/pricing' && 'text-brand-400',
+                        ? 'bg-gray-100 text-slate-900'
+                        : 'text-slate-600 hover:text-slate-900 hover:bg-gray-100',
+                      link.href === '/pricing' && pathname !== '/pricing' && 'text-brand-600',
                     )}
                   >
                     <link.icon className="h-5 w-5" />

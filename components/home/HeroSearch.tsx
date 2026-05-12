@@ -82,7 +82,7 @@ export function HeroSearch() {
 
       {/* Mode tabs */}
       <div className="flex justify-center mb-4">
-        <div className="inline-flex gap-0.5 p-1 rounded-xl bg-black/50 backdrop-blur-md border border-white/10">
+        <div className="inline-flex gap-0.5 p-1 rounded-xl bg-white/90 backdrop-blur-md border border-gray-200 shadow-sm">
           {MODES.map(({ id, label, icon: Icon, color }) => {
             const active = mode === id
             return (
@@ -92,8 +92,8 @@ export function HeroSearch() {
                 className={cn(
                   'flex items-center gap-1.5 px-3 sm:px-4 py-2 rounded-lg text-xs sm:text-sm font-semibold transition-all duration-200',
                   active
-                    ? 'bg-white/10 text-white shadow-sm'
-                    : 'text-slate-500 hover:text-slate-300 hover:bg-white/5',
+                    ? 'bg-white text-slate-900 shadow-sm'
+                    : 'text-slate-500 hover:text-slate-700 hover:bg-gray-100',
                 )}
               >
                 <Icon className={cn('h-3.5 w-3.5 flex-shrink-0', active ? color : '')} />
@@ -105,13 +105,13 @@ export function HeroSearch() {
       </div>
 
       {/* Main search card */}
-      <div className="rounded-2xl border border-white/12 bg-black/75 backdrop-blur-2xl shadow-elevated overflow-hidden">
+      <div className="rounded-2xl border border-gray-200 bg-white shadow-xl overflow-hidden">
 
         {/* Inputs row */}
         <div className="flex flex-col sm:flex-row">
 
           {/* From — typeahead */}
-          <div className="flex-1 relative border-b sm:border-b-0 sm:border-r border-white/8" ref={dropdownRef}>
+          <div className="flex-1 relative border-b sm:border-b-0 sm:border-r border-gray-200" ref={dropdownRef}>
             <div className="flex items-center gap-2 px-4 pt-3 pb-1">
               <MapPin className={cn('h-3.5 w-3.5 flex-shrink-0', activeMode.color)} />
               <span className="text-xs text-slate-500 font-medium uppercase tracking-wider">
@@ -130,25 +130,25 @@ export function HeroSearch() {
                 onChange={e => handleQueryChange(e.target.value)}
                 onFocus={() => query.length > 0 && suggestions.length > 0 && setOpen(true)}
                 placeholder="City or country…"
-                className="w-full bg-transparent text-white text-base font-semibold placeholder:text-slate-600 focus:outline-none"
+                className="w-full bg-transparent text-slate-900 text-base font-semibold placeholder:text-slate-400 focus:outline-none"
               />
             </div>
 
             {/* Suggestions dropdown */}
             {open && suggestions.length > 0 && (
-              <div className="absolute left-0 right-0 top-full z-50 mt-1 rounded-xl border border-white/10 bg-black/95 backdrop-blur-xl shadow-elevated overflow-hidden">
+              <div className="absolute left-0 right-0 top-full z-50 mt-1 rounded-xl border border-gray-200 bg-white shadow-xl overflow-hidden">
                 {suggestions.map(d => (
                   <button
                     key={d.id}
                     onMouseDown={() => selectDestination(d)}
-                    className="w-full flex items-center gap-3 px-4 py-3 text-left hover:bg-white/6 transition-colors border-b border-white/5 last:border-0"
+                    className="w-full flex items-center gap-3 px-4 py-3 text-left hover:bg-gray-50 transition-colors border-b border-gray-100 last:border-0"
                   >
-                    <MapPin className="h-3.5 w-3.5 text-slate-500 flex-shrink-0" />
+                    <MapPin className="h-3.5 w-3.5 text-slate-400 flex-shrink-0" />
                     <div>
-                      <p className="text-sm font-semibold text-white">{d.name}</p>
+                      <p className="text-sm font-semibold text-slate-900">{d.name}</p>
                       <p className="text-xs text-slate-500">{d.country}</p>
                     </div>
-                    <span className="ml-auto text-xs text-slate-600">${d.avgDailyBudgetUsd}/day</span>
+                    <span className="ml-auto text-xs text-slate-400">${d.avgDailyBudgetUsd}/day</span>
                   </button>
                 ))}
               </div>
@@ -156,13 +156,13 @@ export function HeroSearch() {
           </div>
 
           {/* Budget */}
-          <div className="sm:w-48 border-b sm:border-b-0 sm:border-r border-white/8">
+          <div className="sm:w-48 border-b sm:border-b-0 sm:border-r border-gray-200">
             <div className="flex items-center gap-2 px-4 pt-3 pb-1">
               <Wallet className="h-3.5 w-3.5 flex-shrink-0 text-emerald-400" />
               <span className="text-xs text-slate-500 font-medium uppercase tracking-wider">Total budget</span>
             </div>
             <div className="relative px-4 pb-2">
-              <span className="text-slate-400 text-base">$</span>
+              <span className="text-slate-500 text-base">$</span>
               <input
                 type="number"
                 value={budget}
@@ -170,7 +170,7 @@ export function HeroSearch() {
                 min={100}
                 max={10000}
                 step={50}
-                className="bg-transparent text-white text-base font-semibold w-24 focus:outline-none pl-0.5"
+                className="bg-transparent text-slate-900 text-base font-semibold w-24 focus:outline-none pl-0.5"
               />
             </div>
           </div>
@@ -190,7 +190,7 @@ export function HeroSearch() {
         </div>
 
         {/* Budget presets + popular cities */}
-        <div className="border-t border-white/6 px-4 py-3 flex flex-col sm:flex-row gap-3 items-start sm:items-center">
+        <div className="border-t border-gray-100 px-4 py-3 flex flex-col sm:flex-row gap-3 items-start sm:items-center">
 
           {/* Budget presets */}
           <div className="flex items-center gap-2 flex-wrap">
@@ -202,8 +202,8 @@ export function HeroSearch() {
                 className={cn(
                   'text-xs px-2.5 py-1 rounded-full border transition-all',
                   budget === preset.value
-                    ? 'border-brand-500/60 bg-brand-500/15 text-brand-300'
-                    : 'border-white/10 text-slate-500 hover:text-slate-300 hover:border-white/20',
+                    ? 'border-brand-500/60 bg-brand-50 text-brand-600'
+                    : 'border-gray-200 text-slate-500 hover:text-slate-700 hover:border-gray-300',
                 )}
               >
                 {preset.label}
@@ -211,7 +211,7 @@ export function HeroSearch() {
             ))}
           </div>
 
-          <div className="hidden sm:block h-4 w-px bg-white/8" />
+          <div className="hidden sm:block h-4 w-px bg-gray-200" />
 
           {/* Popular starts */}
           <div className="flex items-center gap-2 flex-wrap">
@@ -222,7 +222,7 @@ export function HeroSearch() {
                 onClick={() => selectDestination(d)}
                 className={cn(
                   'text-xs transition-colors',
-                  from === d.id ? 'text-brand-400' : 'text-slate-500 hover:text-slate-300',
+                  from === d.id ? 'text-brand-600' : 'text-slate-500 hover:text-slate-700',
                 )}
               >
                 {d.name}

@@ -188,7 +188,7 @@ export default function HomePage() {
             </h1>
 
             {/* Subheadline */}
-            <p className="text-lg sm:text-xl text-slate-400 max-w-2xl mx-auto mb-10 leading-relaxed">
+            <p className="text-lg sm:text-xl text-white max-w-2xl mx-auto mb-10 leading-relaxed">
               Stop switching between Hostelworld, Rome2Rio, Skyscanner, and Google Maps.
               NomadRoute finds every connection, compares every price, and builds your entire
               backpacking itinerary — in one place.
@@ -484,13 +484,12 @@ export default function HomePage() {
       {/* ── DIGITAL NOMAD CTA ────────────────────────────────────────────── */}
       <section className="py-24 mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         <FadeIn direction="up">
-          <div className="relative overflow-hidden rounded-3xl bg-slate-900">
-            <div className="absolute inset-0 bg-gradient-to-br from-brand-600/30 via-violet-600/20 to-cyan-600/20" />
-            <div className="absolute inset-0 dot-grid opacity-20" />
+          <div className="relative overflow-hidden rounded-3xl bg-white border border-gray-200 shadow-sm">
+            <div className="absolute inset-0 bg-gradient-to-br from-brand-50 via-violet-50/50 to-cyan-50/50" />
             <div className="relative p-12 sm:p-16 text-center">
               <div className="text-5xl mb-6">💻</div>
-              <h2 className="text-3xl sm:text-4xl font-black text-white mb-4">Digital nomad circuits</h2>
-              <p className="text-slate-300 text-lg max-w-xl mx-auto mb-8 leading-relaxed">
+              <h2 className="text-3xl sm:text-4xl font-black text-slate-900 mb-4">Digital nomad circuits</h2>
+              <p className="text-slate-500 text-lg max-w-xl mx-auto mb-8 leading-relaxed">
                 Chiang Mai → Bali → Penang → Bangkok. Pre-built nomad circuits with coworking spaces, visa run info, and fast-internet guides.
               </p>
               <div className="flex flex-col sm:flex-row gap-4 justify-center">
@@ -560,7 +559,7 @@ export default function HomePage() {
                   <Star className="h-3 w-3" />
                   Most popular
                 </div>
-                <p className="text-sm font-semibold text-brand-400 mb-1">Nomad Pro</p>
+                <p className="text-sm font-semibold text-brand-600 mb-1">Nomad Pro</p>
                 <div className="flex items-end gap-2 mb-6">
                   <p className="text-4xl font-black text-slate-900">$4.99</p>
                   <p className="text-slate-500 text-sm mb-1">/month</p>
