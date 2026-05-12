@@ -229,15 +229,15 @@ export default function HomePage() {
       </section>
 
       {/* ── TRUST BAR ───────────────────────────────────────────────────── */}
-      <div className="border-y border-white/5 bg-bg-surface/40 py-5">
+      <div className="border-y border-gray-100 bg-white py-5">
         <div className="mx-auto max-w-6xl px-4">
           <div className="flex flex-wrap items-center justify-center gap-6 sm:gap-10">
             {TRUST_STATS.map(({ value, label, icon: Icon }) => (
-              <div key={label} className="flex items-center gap-2.5 text-center sm:text-left">
-                <Icon className="h-4 w-4 text-brand-400 flex-shrink-0" />
+              <div key={label} className="flex items-center gap-2.5">
+                <Icon className="h-4 w-4 text-brand-500 flex-shrink-0" />
                 <div>
-                  <p className="text-white font-black text-lg leading-none">{value}</p>
-                  <p className="text-slate-600 text-xs mt-0.5">{label}</p>
+                  <p className="text-slate-900 font-black text-lg leading-none">{value}</p>
+                  <p className="text-slate-500 text-xs mt-0.5">{label}</p>
                 </div>
               </div>
             ))}
@@ -246,13 +246,13 @@ export default function HomePage() {
       </div>
 
       {/* ── MARQUEE ─────────────────────────────────────────────────────── */}
-      <div className="border-b border-white/5 bg-bg-surface/20 py-3 overflow-hidden">
+      <div className="border-b border-gray-100 bg-gray-50 py-3 overflow-hidden">
         <div className="marquee-inner gap-0">
           {[...MARQUEE_ITEMS, ...MARQUEE_ITEMS].map((item, i) => (
             <span key={i} className="flex-shrink-0 flex items-center gap-2 text-sm text-slate-500 px-5">
               <span>{item.flag}</span>
               {item.text}
-              <span className="text-white/8 ml-4">·</span>
+              <span className="text-gray-300 ml-4">·</span>
             </span>
           ))}
         </div>
@@ -262,12 +262,12 @@ export default function HomePage() {
       <HowItWorks />
 
       {/* ── TRUST BADGES ────────────────────────────────────────────────── */}
-      <div className="border-b border-white/5 bg-bg-surface/20 py-6">
+      <div className="border-b border-gray-100 bg-white py-6">
         <div className="mx-auto max-w-4xl px-4">
           <div className="flex flex-wrap justify-center gap-8">
             {TRUST_BADGES.map(({ icon: Icon, label }) => (
-              <div key={label} className="flex items-center gap-2 text-sm text-slate-400">
-                <Icon className="h-4 w-4 text-brand-400" />
+              <div key={label} className="flex items-center gap-2 text-sm text-slate-600">
+                <Icon className="h-4 w-4 text-brand-500" />
                 {label}
               </div>
             ))}
@@ -278,11 +278,11 @@ export default function HomePage() {
       {/* ── TRAVEL MODES ────────────────────────────────────────────────── */}
       <section className="py-24 px-4 sm:px-6 lg:px-8 mx-auto max-w-7xl">
         <FadeIn direction="up" className="text-center mb-12">
-          <p className="text-xs text-brand-400 font-semibold uppercase tracking-widest mb-3">8 travel identities</p>
-          <h2 className="text-3xl sm:text-4xl font-black text-white mb-3">
+          <p className="text-xs text-brand-600 font-semibold uppercase tracking-widest mb-3">8 travel identities</p>
+          <h2 className="text-3xl sm:text-4xl font-black text-slate-900 mb-3">
             How do you like to travel?
           </h2>
-          <p className="text-slate-400 max-w-lg mx-auto">
+          <p className="text-slate-500 max-w-lg mx-auto">
             Pick your vibe. Each mode generates different routes, transport choices, stopovers, and hostel types.
           </p>
         </FadeIn>
@@ -293,16 +293,16 @@ export default function HomePage() {
               <Link
                 href={mode.href}
                 className={cn(
-                  'group flex flex-col gap-3 rounded-2xl border bg-bg-elevated p-5 transition-all duration-200 hover:-translate-y-1',
-                  mode.border, mode.bg,
+                  'group flex flex-col gap-3 rounded-2xl border bg-white p-5 transition-all duration-200 hover:-translate-y-1 hover:shadow-md',
+                  'border-gray-200',
                 )}
               >
                 <span className="text-3xl">{mode.emoji}</span>
                 <div className="flex-1">
-                  <p className={cn('font-bold text-sm text-white', mode.text)}>{mode.label}</p>
+                  <p className="font-bold text-sm text-slate-900">{mode.label}</p>
                   <p className="text-xs text-slate-500 mt-0.5">{mode.desc}</p>
                 </div>
-                <ArrowRight className={cn('h-3.5 w-3.5 opacity-0 group-hover:opacity-100 transition-opacity', mode.text)} />
+                <ArrowRight className="h-3.5 w-3.5 opacity-0 group-hover:opacity-100 transition-opacity text-slate-400" />
               </Link>
             </FadeIn>
           ))}
@@ -310,15 +310,15 @@ export default function HomePage() {
       </section>
 
       {/* ── FEATURED ROUTES ─────────────────────────────────────────────── */}
-      <section className="py-24 bg-bg-surface/30 border-y border-white/5">
+      <section className="py-24 bg-gray-50 border-y border-gray-100">
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
           <div className="flex items-end justify-between mb-10">
             <div>
-              <p className="text-xs text-brand-400 font-semibold uppercase tracking-widest mb-2">Most shared itineraries</p>
-              <h2 className="text-3xl sm:text-4xl font-black text-white">Popular routes</h2>
-              <p className="text-slate-400 mt-2">Tried & tested by thousands of backpackers</p>
+              <p className="text-xs text-brand-600 font-semibold uppercase tracking-widest mb-2">Most shared itineraries</p>
+              <h2 className="text-3xl sm:text-4xl font-black text-slate-900">Popular routes</h2>
+              <p className="text-slate-500 mt-2">Tried & tested by thousands of backpackers</p>
             </div>
-            <Link href="/routes" className="hidden sm:flex items-center gap-1.5 text-sm text-brand-400 hover:text-brand-300 transition-colors">
+            <Link href="/routes" className="hidden sm:flex items-center gap-1.5 text-sm text-brand-600 hover:text-brand-700 transition-colors">
               View all <ArrowRight className="h-4 w-4" />
             </Link>
           </div>
@@ -348,9 +348,9 @@ export default function HomePage() {
       {/* ── ROUTE TEMPLATES ─────────────────────────────────────────────── */}
       <section className="py-24 mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         <FadeIn direction="up" className="mb-10">
-          <p className="text-xs text-emerald-400 font-semibold uppercase tracking-widest mb-2">Start in one click</p>
-          <h2 className="text-3xl font-black text-white">Jump right in</h2>
-          <p className="text-slate-400 mt-2">Click any template — then remix it for your exact trip.</p>
+          <p className="text-xs text-emerald-600 font-semibold uppercase tracking-widest mb-2">Start in one click</p>
+          <h2 className="text-3xl font-black text-slate-900">Jump right in</h2>
+          <p className="text-slate-500 mt-2">Click any template — then remix it for your exact trip.</p>
         </FadeIn>
 
         <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-3">
@@ -368,7 +368,7 @@ export default function HomePage() {
                 <div className="absolute inset-0 p-3 flex flex-col justify-end">
                   <p className="text-xl leading-none mb-1">{r.emoji}</p>
                   <p className="text-sm font-bold text-white leading-tight">{r.label}</p>
-                  <p className="text-xs text-slate-400 mt-0.5">{r.duration}</p>
+                  <p className="text-xs text-white/70 mt-0.5">{r.duration}</p>
                 </div>
               </Link>
             </FadeIn>
@@ -377,14 +377,12 @@ export default function HomePage() {
       </section>
 
       {/* ── BUDGET SHOWCASE ──────────────────────────────────────────────── */}
-      <section className="py-24 bg-bg-surface/40 border-y border-white/5">
+      <section className="py-24 bg-gray-50 border-y border-gray-100">
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
           <FadeIn direction="up" className="text-center mb-14">
-            <p className="text-xs text-emerald-400 font-semibold uppercase tracking-widest mb-2">Real backpacker data</p>
-            <h2 className="text-3xl sm:text-4xl font-black text-white mb-4">How far does your money go?</h2>
-            <p className="text-slate-400 max-w-xl mx-auto">
-              Verified spending data from thousands of real trips — not tourist estimates.
-            </p>
+            <p className="text-xs text-emerald-600 font-semibold uppercase tracking-widest mb-2">Real backpacker data</p>
+            <h2 className="text-3xl sm:text-4xl font-black text-slate-900 mb-4">How far does your money go?</h2>
+            <p className="text-slate-500 max-w-xl mx-auto">Verified spending data from thousands of real trips — not tourist estimates.</p>
           </FadeIn>
 
           <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-5">
@@ -395,27 +393,25 @@ export default function HomePage() {
               { country: 'Bali',     emoji: '🇮🇩', perDay: 40, weeks2: 620, highlight: 'Nomad hub',    bar: 100, slug: 'bali' },
             ].map(({ country, emoji, perDay, weeks2, highlight, bar, slug }, i) => (
               <FadeIn key={country} delay={i * 80} direction="up">
-                <div className="rounded-2xl border border-white/8 bg-bg-elevated p-5 hover:border-white/15 transition-colors h-full flex flex-col">
+                <div className="rounded-2xl border border-gray-200 bg-white p-5 hover:shadow-md transition-shadow h-full flex flex-col">
                   <div className="flex items-start justify-between mb-4">
                     <span className="text-4xl">{emoji}</span>
-                    <span className="text-xs rounded-full border border-emerald-500/30 bg-emerald-500/10 text-emerald-400 px-2 py-0.5 font-medium">
-                      {highlight}
-                    </span>
+                    <span className="text-xs rounded-full border border-emerald-200 bg-emerald-50 text-emerald-700 px-2 py-0.5 font-medium">{highlight}</span>
                   </div>
-                  <h3 className="text-lg font-bold text-white">{country}</h3>
-                  <p className="text-3xl font-black text-emerald-400 mt-1">
-                    ${perDay}<span className="text-sm text-slate-500 font-normal"> /day</span>
+                  <h3 className="text-lg font-bold text-slate-900">{country}</h3>
+                  <p className="text-3xl font-black text-emerald-600 mt-1">
+                    ${perDay}<span className="text-sm text-slate-400 font-normal"> /day</span>
                   </p>
                   <div className="mt-3 mb-4">
-                    <div className="h-1.5 rounded-full bg-white/5">
-                      <div className="h-full rounded-full bg-gradient-to-r from-emerald-600 to-emerald-400" style={{ width: `${bar}%` }} />
+                    <div className="h-1.5 rounded-full bg-gray-100">
+                      <div className="h-full rounded-full bg-gradient-to-r from-emerald-500 to-emerald-400" style={{ width: `${bar}%` }} />
                     </div>
                   </div>
-                  <div className="pt-3 border-t border-white/5 flex-1 flex flex-col justify-end">
-                    <p className="text-xs text-slate-500">2 weeks all-in:</p>
-                    <p className="text-2xl font-black text-white">${weeks2}</p>
+                  <div className="pt-3 border-t border-gray-100 flex-1 flex flex-col justify-end">
+                    <p className="text-xs text-slate-400">2 weeks all-in:</p>
+                    <p className="text-2xl font-black text-slate-900">${weeks2}</p>
                     <Link href={`/plan?country=${slug}`}>
-                      <button className="mt-3 text-xs text-brand-400 hover:text-brand-300 flex items-center gap-1 transition-colors">
+                      <button className="mt-3 text-xs text-brand-600 hover:text-brand-700 flex items-center gap-1 transition-colors font-medium">
                         Plan this trip <ArrowRight className="h-3 w-3" />
                       </button>
                     </Link>
@@ -431,26 +427,24 @@ export default function HomePage() {
       <section className="py-24 mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         <div className="grid lg:grid-cols-2 gap-16 items-center">
           <FadeIn direction="right">
-            <p className="text-xs text-cyan-400 font-semibold uppercase tracking-widest mb-2">Transport discovery</p>
-            <h2 className="text-3xl sm:text-4xl font-black text-white mb-6">
-              Every way to get across Southeast Asia
-            </h2>
-            <p className="text-slate-400 mb-8 leading-relaxed">
+            <p className="text-xs text-cyan-600 font-semibold uppercase tracking-widest mb-2">Transport discovery</p>
+            <h2 className="text-3xl sm:text-4xl font-black text-slate-900 mb-6">Every way to get across Southeast Asia</h2>
+            <p className="text-slate-500 mb-8 leading-relaxed">
               Overnight sleeper trains, legendary Mekong slow boats, budget flights — surfaced side by side with direct booking links.
             </p>
             <div className="space-y-4">
               {[
-                { icon: Train, label: 'Sleeper Trains',       desc: 'Vietnam Reunification Express, Bangkok–CM overnight', color: 'text-violet-400', bg: 'bg-violet-500/10' },
-                { icon: Ship,  label: 'Ferries & Slow Boats', desc: '2-day Mekong slow boat, island ferries',              color: 'text-cyan-400',   bg: 'bg-cyan-500/10' },
-                { icon: Bus,   label: 'Buses & Minivans',     desc: 'Cross-border buses, local transport',                color: 'text-blue-400',   bg: 'bg-blue-500/10' },
-                { icon: Plane, label: 'Budget Flights',       desc: 'AirAsia, VietJet, Scoot — the cheap ones',          color: 'text-amber-400',  bg: 'bg-amber-500/10' },
+                { icon: Train, label: 'Sleeper Trains',       desc: 'Vietnam Reunification Express, Bangkok–CM overnight', color: 'text-violet-600', bg: 'bg-violet-50' },
+                { icon: Ship,  label: 'Ferries & Slow Boats', desc: '2-day Mekong slow boat, island ferries',              color: 'text-cyan-600',   bg: 'bg-cyan-50' },
+                { icon: Bus,   label: 'Buses & Minivans',     desc: 'Cross-border buses, local transport',                color: 'text-blue-600',   bg: 'bg-blue-50' },
+                { icon: Plane, label: 'Budget Flights',       desc: 'AirAsia, VietJet, Scoot — the cheap ones',          color: 'text-amber-600',  bg: 'bg-amber-50' },
               ].map(({ icon: Icon, label, desc, color, bg }) => (
                 <div key={label} className="flex items-center gap-4 group">
                   <div className={cn('h-11 w-11 rounded-xl flex items-center justify-center flex-shrink-0 transition-transform group-hover:scale-105', bg)}>
                     <Icon className={cn('h-5 w-5', color)} />
                   </div>
                   <div>
-                    <p className="font-semibold text-white text-sm">{label}</p>
+                    <p className="font-semibold text-slate-900 text-sm">{label}</p>
                     <p className="text-xs text-slate-500">{desc}</p>
                   </div>
                 </div>
@@ -460,24 +454,24 @@ export default function HomePage() {
 
           <FadeIn direction="left">
             <div className="relative">
-              <div className="absolute -inset-4 rounded-3xl bg-gradient-to-r from-cyan-500/10 to-brand-500/10 blur-2xl" />
-              <div className="relative rounded-3xl border border-white/10 bg-bg-surface p-6 space-y-3">
-                <p className="text-xs text-slate-500 uppercase tracking-widest mb-4">Live price comparison</p>
+              <div className="absolute -inset-4 rounded-3xl bg-cyan-50 blur-2xl" />
+              <div className="relative rounded-3xl border border-gray-200 bg-white p-6 space-y-3 shadow-sm">
+                <p className="text-xs text-slate-400 uppercase tracking-widest mb-4">Live price comparison</p>
                 {[
-                  { from: 'Hanoi',     to: 'Hoi An',         type: '🚂 Sleeper train', duration: '16h',    price: '$18', note: 'vs $85 flight' },
-                  { from: 'Bangkok',   to: 'Chiang Mai',     type: '🚂 Night train',   duration: '12h',    price: '$15', note: 'vs $60 flight' },
-                  { from: 'Chiang Mai',to: 'Luang Prabang',  type: '⛵ Slow boat',     duration: '2 days', price: '$55', note: 'iconic route' },
-                  { from: 'Siem Reap', to: 'Bangkok',        type: '🚌 VIP bus',       duration: '9h',     price: '$18', note: 'vs $45 flight' },
-                  { from: 'KL',        to: 'Bali',           type: '✈️ Budget flight', duration: '2.5h',   price: '$28', note: 'AirAsia' },
+                  { from: 'Hanoi',      to: 'Hoi An',        type: '🚂 Sleeper train', duration: '16h',    price: '$18', note: 'vs $85 flight' },
+                  { from: 'Bangkok',    to: 'Chiang Mai',    type: '🚂 Night train',   duration: '12h',    price: '$15', note: 'vs $60 flight' },
+                  { from: 'Chiang Mai', to: 'Luang Prabang', type: '⛵ Slow boat',     duration: '2 days', price: '$55', note: 'iconic route' },
+                  { from: 'Siem Reap',  to: 'Bangkok',       type: '🚌 VIP bus',       duration: '9h',     price: '$18', note: 'vs $45 flight' },
+                  { from: 'KL',         to: 'Bali',          type: '✈️ Budget flight', duration: '2.5h',   price: '$28', note: 'AirAsia' },
                 ].map(({ from, to, type, duration, price, note }) => (
-                  <div key={`${from}-${to}`} className="flex items-center gap-3 rounded-xl border border-white/5 bg-bg-elevated px-4 py-3 hover:border-white/10 transition-colors">
+                  <div key={`${from}-${to}`} className="flex items-center gap-3 rounded-xl border border-gray-100 bg-gray-50 px-4 py-3 hover:border-gray-200 transition-colors">
                     <div className="flex-1 min-w-0">
-                      <p className="text-sm font-semibold text-white truncate">{from} → {to}</p>
+                      <p className="text-sm font-semibold text-slate-900 truncate">{from} → {to}</p>
                       <p className="text-xs text-slate-500">{type} · {duration}</p>
                     </div>
                     <div className="text-right flex-shrink-0">
-                      <p className="text-emerald-400 font-bold text-sm">{price}</p>
-                      <p className="text-xs text-slate-600">{note}</p>
+                      <p className="text-emerald-600 font-bold text-sm">{price}</p>
+                      <p className="text-xs text-slate-400">{note}</p>
                     </div>
                   </div>
                 ))}
@@ -490,10 +484,9 @@ export default function HomePage() {
       {/* ── DIGITAL NOMAD CTA ────────────────────────────────────────────── */}
       <section className="py-24 mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         <FadeIn direction="up">
-          <div className="relative overflow-hidden rounded-3xl">
-            <div className="absolute inset-0 bg-gradient-to-br from-brand-600/20 via-violet-600/15 to-cyan-600/15" />
-            <div className="absolute inset-0 border border-brand-500/20 rounded-3xl" />
-            <div className="absolute inset-0 dot-grid opacity-25" />
+          <div className="relative overflow-hidden rounded-3xl bg-slate-900">
+            <div className="absolute inset-0 bg-gradient-to-br from-brand-600/30 via-violet-600/20 to-cyan-600/20" />
+            <div className="absolute inset-0 dot-grid opacity-20" />
             <div className="relative p-12 sm:p-16 text-center">
               <div className="text-5xl mb-6">💻</div>
               <h2 className="text-3xl sm:text-4xl font-black text-white mb-4">Digital nomad circuits</h2>
@@ -514,17 +507,17 @@ export default function HomePage() {
       </section>
 
       {/* ── PARTNERS ─────────────────────────────────────────────────────── */}
-      <section className="py-16 border-y border-white/5 bg-bg-surface/20">
+      <section className="py-16 border-y border-gray-100 bg-gray-50">
         <div className="mx-auto max-w-5xl px-4">
           <FadeIn direction="up" className="text-center mb-10">
-            <p className="text-xs text-slate-600 uppercase tracking-widest">Powered by trusted travel APIs</p>
+            <p className="text-xs text-slate-400 uppercase tracking-widest">Powered by trusted travel APIs</p>
           </FadeIn>
           <div className="grid grid-cols-3 sm:grid-cols-6 gap-4">
             {PARTNERS.map((p, i) => (
               <FadeIn key={p.name} delay={i * 60} direction="up">
-                <div className="rounded-xl border border-white/6 bg-white/2 p-4 text-center hover:border-white/12 transition-colors">
-                  <p className="text-sm font-bold text-slate-300">{p.name}</p>
-                  <p className="text-xs text-slate-600 mt-0.5">{p.desc}</p>
+                <div className="rounded-xl border border-gray-200 bg-white p-4 text-center hover:shadow-sm transition-shadow">
+                  <p className="text-sm font-bold text-slate-700">{p.name}</p>
+                  <p className="text-xs text-slate-400 mt-0.5">{p.desc}</p>
                 </div>
               </FadeIn>
             ))}
@@ -533,25 +526,25 @@ export default function HomePage() {
       </section>
 
       {/* ── PREMIUM TEASER ───────────────────────────────────────────────── */}
-      <section className="py-24 bg-bg-surface/40 border-b border-white/5">
+      <section className="py-24 bg-white border-b border-gray-100">
         <div className="mx-auto max-w-5xl px-4 sm:px-6 lg:px-8">
           <FadeIn direction="up" className="text-center mb-12">
-            <p className="text-xs text-brand-400 font-semibold uppercase tracking-widest mb-3">Go further with Pro</p>
-            <h2 className="text-3xl sm:text-4xl font-black text-white mb-3">
+            <p className="text-xs text-brand-600 font-semibold uppercase tracking-widest mb-3">Go further with Pro</p>
+            <h2 className="text-3xl sm:text-4xl font-black text-slate-900 mb-3">
               Unlimited routes. <span className="gradient-text">$4.99/month.</span>
             </h2>
-            <p className="text-slate-400 max-w-lg mx-auto">Free gets you started. Pro gets you everywhere.</p>
+            <p className="text-slate-500 max-w-lg mx-auto">Free gets you started. Pro gets you everywhere.</p>
           </FadeIn>
 
           <div className="grid sm:grid-cols-2 gap-6 items-center">
             <FadeIn direction="right">
-              <div className="rounded-2xl border border-white/10 bg-bg-elevated p-7">
-                <p className="text-sm font-semibold text-slate-400 mb-1">Free</p>
-                <p className="text-4xl font-black text-white mb-6">$0</p>
-                <ul className="space-y-3 text-sm text-slate-400">
+              <div className="rounded-2xl border border-gray-200 bg-gray-50 p-7">
+                <p className="text-sm font-semibold text-slate-500 mb-1">Free</p>
+                <p className="text-4xl font-black text-slate-900 mb-6">$0</p>
+                <ul className="space-y-3 text-sm text-slate-500">
                   {['3 route generations per day', 'All 16 destinations', 'Budget estimates', 'Basic route sharing'].map(f => (
                     <li key={f} className="flex items-center gap-2">
-                      <Check className="h-4 w-4 text-slate-600 flex-shrink-0" />{f}
+                      <Check className="h-4 w-4 text-gray-300 flex-shrink-0" />{f}
                     </li>
                   ))}
                 </ul>
@@ -562,33 +555,33 @@ export default function HomePage() {
             </FadeIn>
 
             <FadeIn direction="left">
-              <div className="relative rounded-2xl border border-brand-500/50 bg-gradient-pricing p-7 animate-glow-pulse">
+              <div className="relative rounded-2xl border-2 border-brand-400 bg-brand-50 p-7">
                 <div className="absolute -top-3 left-1/2 -translate-x-1/2 flex items-center gap-1.5 rounded-full bg-brand-500 px-4 py-1 text-xs font-bold text-black">
                   <Star className="h-3 w-3" />
                   Most popular
                 </div>
                 <p className="text-sm font-semibold text-brand-400 mb-1">Nomad Pro</p>
                 <div className="flex items-end gap-2 mb-6">
-                  <p className="text-4xl font-black text-white">$4.99</p>
+                  <p className="text-4xl font-black text-slate-900">$4.99</p>
                   <p className="text-slate-500 text-sm mb-1">/month</p>
                 </div>
-                <ul className="space-y-3 text-sm text-slate-300">
+                <ul className="space-y-3 text-sm text-slate-600">
                   {PRO_FEATURES.map(f => (
                     <li key={f} className="flex items-center gap-2">
-                      <Check className="h-4 w-4 text-brand-400 flex-shrink-0" />{f}
+                      <Check className="h-4 w-4 text-brand-500 flex-shrink-0" />{f}
                     </li>
                   ))}
                 </ul>
                 <Link href="/pricing" className="mt-7 block">
                   <Button variant="primary" size="md" className="w-full">Start 7-day free trial</Button>
                 </Link>
-                <p className="text-center text-xs text-slate-600 mt-2">No credit card required for trial</p>
+                <p className="text-center text-xs text-slate-400 mt-2">No credit card required for trial</p>
               </div>
             </FadeIn>
           </div>
 
           <FadeIn direction="up" className="text-center mt-8">
-            <Link href="/pricing" className="text-sm text-brand-400 hover:text-brand-300 transition-colors">
+            <Link href="/pricing" className="text-sm text-brand-600 hover:text-brand-700 transition-colors">
               See all plans including group & crew pricing →
             </Link>
           </FadeIn>
@@ -596,12 +589,12 @@ export default function HomePage() {
       </section>
 
       {/* ── FINAL CTA ────────────────────────────────────────────────────── */}
-      <section className="py-28 bg-bg-surface/20">
+      <section className="py-28 bg-gray-50 border-t border-gray-100">
         <div className="mx-auto max-w-3xl px-4 text-center">
           <FadeIn direction="up">
             <div className="text-6xl mb-6">🌏</div>
-            <h2 className="text-4xl sm:text-5xl font-black text-white mb-4">Ready to go?</h2>
-            <p className="text-slate-400 text-lg mb-8">
+            <h2 className="text-4xl sm:text-5xl font-black text-slate-900 mb-4">Ready to go?</h2>
+            <p className="text-slate-500 text-lg mb-8">
               Join 12,000+ backpackers who planned their SEA adventure with NomadRoute.
             </p>
             <Link href="/plan">
