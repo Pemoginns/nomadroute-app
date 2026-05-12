@@ -112,12 +112,12 @@ export default function HomePage() {
             alt="Southeast Asia islands"
             fill
             priority
-            className="object-cover opacity-55 hero-img"
+            className="object-cover opacity-90 hero-img"
             sizes="100vw"
           />
-          {/* Gradient: dark at top for nav legibility, lighter in centre, dark at bottom */}
-          <div className="absolute inset-0 bg-gradient-to-b from-black/75 via-black/30 to-black/85" />
-          <div className="absolute inset-0 bg-gradient-to-r from-black/40 via-transparent to-black/40" />
+          {/* Only darken the very top (nav) and very bottom — let the island show */}
+          <div className="absolute inset-0 bg-gradient-to-b from-black/60 via-transparent to-black/70" />
+          <div className="absolute inset-0 bg-gradient-to-r from-black/20 via-transparent to-black/20" />
         </div>
 
         {/* Ambient glow orbs */}
@@ -181,7 +181,7 @@ export default function HomePage() {
             </div>
 
             {/* Headline */}
-            <h1 className="text-5xl sm:text-6xl lg:text-7xl font-black tracking-tight leading-[1.05] text-white mb-6">
+            <h1 className="text-5xl sm:text-6xl lg:text-7xl font-black tracking-tight leading-[1.05] text-white mb-6 drop-shadow-[0_2px_24px_rgba(0,0,0,0.8)]">
               Every flight, train,<br />
               bus and hostel —<br />
               <span className="gradient-text">one search.</span>
