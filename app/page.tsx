@@ -310,7 +310,7 @@ export default function HomePage() {
       </section>
 
       {/* ── FEATURED ROUTES ─────────────────────────────────────────────── */}
-      <section className="py-24 bg-gray-50 border-y border-gray-100">
+      <section className="py-24 bg-gray-50 dark:bg-gray-900 border-y border-gray-100 dark:border-gray-800">
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
           <div className="flex items-end justify-between mb-10">
             <div>
@@ -377,7 +377,7 @@ export default function HomePage() {
       </section>
 
       {/* ── BUDGET SHOWCASE ──────────────────────────────────────────────── */}
-      <section className="py-24 bg-gray-50 border-y border-gray-100">
+      <section className="py-24 bg-gray-50 dark:bg-gray-900 border-y border-gray-100 dark:border-gray-800">
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
           <FadeIn direction="up" className="text-center mb-14">
             <p className="text-xs text-emerald-600 dark:text-emerald-400 font-semibold uppercase tracking-widest mb-2">Real backpacker data</p>
@@ -588,7 +588,7 @@ export default function HomePage() {
       </section>
 
       {/* ── FINAL CTA ────────────────────────────────────────────────────── */}
-      <section className="py-28 bg-gray-50 border-t border-gray-100">
+      <section className="py-28 bg-gray-50 dark:bg-gray-900 border-t border-gray-100 dark:border-gray-800">
         <div className="mx-auto max-w-3xl px-4 text-center">
           <FadeIn direction="up">
             <div className="text-6xl mb-6">🌏</div>
