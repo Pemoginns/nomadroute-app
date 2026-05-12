@@ -1,10 +1,10 @@
 'use client'
 
-import { useState } from 'react'
+import { useState, useRef, useEffect } from 'react'
 import { useRouter } from 'next/navigation'
 import {
   Compass, Plane, Train, Ship, Building2,
-  MapPin, Wallet, Zap, ChevronDown,
+  MapPin, Wallet, Zap,
 } from 'lucide-react'
 import { Button } from '@/components/ui/Button'
 import { DESTINATION_LIST, POPULAR_START_DESTINATIONS } from '@/lib/data/destinations'
@@ -36,7 +36,38 @@ export function HeroSearch() {
   const router = useRouter()
   const [mode, setMode] = useState<ModeId>('route')
   const [from, setFrom] = useState('bangkok')
+  const [query, setQuery] = useState('Bangkok, Thailand')
+  const [suggestions, setSuggestions] = useState<typeof DESTINATION_LIST>([])
+  const [open, setOpen] = useState(false)
   const [budget, setBudget] = useState(600)
+  const inputRef = useRef<HTMLInputElement>(null)
+  const dropdownRef = useRef<HTMLDivElement>(null)
+
+  // Close dropdown on outside click
+  useEffect(() => {
+    const handler = (e: MouseEvent) => {
+      if (!dropdownRef.current?.contains(e.target as Node)) setOpen(false)
+    }
+    document.addEventListener('mousedown', handler)
+    return () => document.removeEventListener('mousedown', handler)
+  }, [])
+
+  const handleQueryChange = (val: string) => {
+    setQuery(val)
+    const q = val.toLowerCase().trim()
+    if (q.length < 1) { setSuggestions([]); setOpen(false); return }
+    const matches = DESTINATION_LIST.filter(d =>
+      d.name.toLowerCase().includes(q) || d.country.toLowerCase().includes(q)
+    ).slice(0, 6)
+    setSuggestions(matches)
+    setOpen(matches.length > 0)
+  }
+
+  const selectDestination = (d: (typeof DESTINATION_LIST)[number]) => {
+    setFrom(d.id)
+    setQuery(`${d.name}, ${d.country}`)
+    setOpen(false)
+  }
 
   const handleSearch = () => {
     const params = new URLSearchParams({ from, budget: String(budget) })
@@ -79,28 +110,49 @@ export function HeroSearch() {
         {/* Inputs row */}
         <div className="flex flex-col sm:flex-row">
 
-          {/* From */}
-          <div className="flex-1 relative border-b sm:border-b-0 sm:border-r border-white/8">
+          {/* From — typeahead */}
+          <div className="flex-1 relative border-b sm:border-b-0 sm:border-r border-white/8" ref={dropdownRef}>
             <div className="flex items-center gap-2 px-4 pt-3 pb-1">
               <MapPin className={cn('h-3.5 w-3.5 flex-shrink-0', activeMode.color)} />
               <span className="text-xs text-slate-500 font-medium uppercase tracking-wider">
                 Departing from
               </span>
             </div>
-            <div className="relative px-2 pb-2">
-              <select
-                value={from}
-                onChange={e => setFrom(e.target.value)}
-                className="w-full bg-transparent px-2 py-1.5 text-white text-base font-semibold appearance-none focus:outline-none cursor-pointer"
-              >
-                {DESTINATION_LIST.map(d => (
-                  <option key={d.id} value={d.id} className="bg-bg-elevated text-white">
-                    {d.name}, {d.country}
-                  </option>
-                ))}
-              </select>
-              <ChevronDown className="pointer-events-none absolute right-3 top-1/2 -translate-y-1/2 h-4 w-4 text-slate-500" />
+            <div className="px-4 pb-2">
+              <input
+                ref={inputRef}
+                type="text"
+                autoComplete="off"
+                autoCorrect="off"
+                spellCheck={false}
+                maxLength={120}
+                value={query}
+                onChange={e => handleQueryChange(e.target.value)}
+                onFocus={() => query.length > 0 && suggestions.length > 0 && setOpen(true)}
+                placeholder="City or country…"
+                className="w-full bg-transparent text-white text-base font-semibold placeholder:text-slate-600 focus:outline-none"
+              />
             </div>
+
+            {/* Suggestions dropdown */}
+            {open && suggestions.length > 0 && (
+              <div className="absolute left-0 right-0 top-full z-50 mt-1 rounded-xl border border-white/10 bg-black/95 backdrop-blur-xl shadow-elevated overflow-hidden">
+                {suggestions.map(d => (
+                  <button
+                    key={d.id}
+                    onMouseDown={() => selectDestination(d)}
+                    className="w-full flex items-center gap-3 px-4 py-3 text-left hover:bg-white/6 transition-colors border-b border-white/5 last:border-0"
+                  >
+                    <MapPin className="h-3.5 w-3.5 text-slate-500 flex-shrink-0" />
+                    <div>
+                      <p className="text-sm font-semibold text-white">{d.name}</p>
+                      <p className="text-xs text-slate-500">{d.country}</p>
+                    </div>
+                    <span className="ml-auto text-xs text-slate-600">${d.avgDailyBudgetUsd}/day</span>
+                  </button>
+                ))}
+              </div>
+            )}
           </div>
 
           {/* Budget */}
@@ -167,7 +219,7 @@ export function HeroSearch() {
             {POPULAR.map(d => (
               <button
                 key={d.id}
-                onClick={() => setFrom(d.id)}
+                onClick={() => selectDestination(d)}
                 className={cn(
                   'text-xs transition-colors',
                   from === d.id ? 'text-brand-400' : 'text-slate-500 hover:text-slate-300',

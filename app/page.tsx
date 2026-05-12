@@ -105,26 +105,27 @@ export default function HomePage() {
         ref={heroRef}
         className="relative min-h-screen overflow-hidden flex items-center justify-center"
       >
-        {/* Background photo */}
+        {/* Background photo — SEA islands */}
         <div className="absolute inset-0">
           <Image
-            src="https://images.unsplash.com/photo-1559494007338-7b52b5d60b76?w=1920&q=70"
-            alt="Southeast Asia"
+            src="https://images.unsplash.com/photo-1537953773345-d172ccf13cf1?w=1920&q=85"
+            alt="Southeast Asia islands"
             fill
             priority
-            className="object-cover opacity-15 hero-img"
+            className="object-cover opacity-55 hero-img"
             sizes="100vw"
           />
-          <div className="absolute inset-0 bg-gradient-to-b from-black/85 via-black/65 to-black" />
-          <div className="absolute inset-0 bg-gradient-to-r from-black/50 via-transparent to-black/50" />
+          {/* Gradient: dark at top for nav legibility, lighter in centre, dark at bottom */}
+          <div className="absolute inset-0 bg-gradient-to-b from-black/75 via-black/30 to-black/85" />
+          <div className="absolute inset-0 bg-gradient-to-r from-black/40 via-transparent to-black/40" />
         </div>
 
         {/* Ambient glow orbs */}
-        <div className="absolute top-1/4 left-1/5 w-[600px] h-[600px] bg-brand-500/6 rounded-full blur-[130px] pointer-events-none" />
-        <div className="absolute bottom-1/4 right-1/4 w-[400px] h-[400px] bg-violet-600/5 rounded-full blur-[100px] pointer-events-none" />
+        <div className="absolute top-1/3 left-1/4 w-[500px] h-[500px] bg-brand-500/10 rounded-full blur-[120px] pointer-events-none" />
+        <div className="absolute bottom-1/3 right-1/3 w-[400px] h-[400px] bg-cyan-500/8 rounded-full blur-[100px] pointer-events-none" />
 
         {/* Animated SVG map */}
-        <div className="absolute inset-0 opacity-20 pointer-events-none">
+        <div className="absolute inset-0 opacity-30 pointer-events-none">
           <svg viewBox="0 0 1440 900" className="w-full h-full" preserveAspectRatio="xMidYMid slice">
             <defs>
               <radialGradient id="heroMapGlow" cx="50%" cy="50%" r="50%">
