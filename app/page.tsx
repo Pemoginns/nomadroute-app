@@ -98,7 +98,7 @@ export default function HomePage() {
   const heroOpacity = useTransform(scrollYProgress, [0, 0.55], [1, 0])
 
   return (
-    <div className="min-h-screen bg-bg-base">
+    <div className="min-h-screen bg-gray-50 dark:bg-gray-950">
 
       {/* ── HERO ─────────────────────────────────────────────────────────── */}
       <section
@@ -236,8 +236,8 @@ export default function HomePage() {
               <div key={label} className="flex items-center gap-2.5">
                 <Icon className="h-4 w-4 text-brand-500 flex-shrink-0" />
                 <div>
-                  <p className="text-slate-900 font-black text-lg leading-none">{value}</p>
-                  <p className="text-slate-500 text-xs mt-0.5">{label}</p>
+                  <p className="text-slate-900 dark:text-white font-black text-lg leading-none">{value}</p>
+                  <p className="text-slate-500 dark:text-gray-400 text-xs mt-0.5">{label}</p>
                 </div>
               </div>
             ))}
@@ -252,7 +252,7 @@ export default function HomePage() {
             <span key={i} className="flex-shrink-0 flex items-center gap-2 text-sm text-slate-500 px-5">
               <span>{item.flag}</span>
               {item.text}
-              <span className="text-gray-300 ml-4">·</span>
+              <span className="text-gray-300 dark:text-gray-700 ml-4">·</span>
             </span>
           ))}
         </div>
@@ -266,7 +266,7 @@ export default function HomePage() {
         <div className="mx-auto max-w-4xl px-4">
           <div className="flex flex-wrap justify-center gap-8">
             {TRUST_BADGES.map(({ icon: Icon, label }) => (
-              <div key={label} className="flex items-center gap-2 text-sm text-slate-600">
+              <div key={label} className="flex items-center gap-2 text-sm text-slate-600 dark:text-gray-300">
                 <Icon className="h-4 w-4 text-brand-500" />
                 {label}
               </div>
@@ -278,11 +278,11 @@ export default function HomePage() {
       {/* ── TRAVEL MODES ────────────────────────────────────────────────── */}
       <section className="py-24 px-4 sm:px-6 lg:px-8 mx-auto max-w-7xl">
         <FadeIn direction="up" className="text-center mb-12">
-          <p className="text-xs text-brand-600 font-semibold uppercase tracking-widest mb-3">8 travel identities</p>
-          <h2 className="text-3xl sm:text-4xl font-black text-slate-900 mb-3">
+          <p className="text-xs text-brand-600 dark:text-brand-400 font-semibold uppercase tracking-widest mb-3">8 travel identities</p>
+          <h2 className="text-3xl sm:text-4xl font-black text-slate-900 dark:text-white mb-3">
             How do you like to travel?
           </h2>
-          <p className="text-slate-500 max-w-lg mx-auto">
+          <p className="text-slate-500 dark:text-gray-400 max-w-lg mx-auto">
             Pick your vibe. Each mode generates different routes, transport choices, stopovers, and hostel types.
           </p>
         </FadeIn>
@@ -293,14 +293,14 @@ export default function HomePage() {
               <Link
                 href={mode.href}
                 className={cn(
-                  'group flex flex-col gap-3 rounded-2xl border bg-white p-5 transition-all duration-200 hover:-translate-y-1 hover:shadow-md',
-                  'border-gray-200',
+                  'group flex flex-col gap-3 rounded-2xl border bg-white dark:bg-gray-800 p-5 transition-all duration-200 hover:-translate-y-1 hover:shadow-md',
+                  'border-gray-200 dark:border-gray-700',
                 )}
               >
                 <span className="text-3xl">{mode.emoji}</span>
                 <div className="flex-1">
-                  <p className="font-bold text-sm text-slate-900">{mode.label}</p>
-                  <p className="text-xs text-slate-500 mt-0.5">{mode.desc}</p>
+                  <p className="font-bold text-sm text-slate-900 dark:text-white">{mode.label}</p>
+                  <p className="text-xs text-slate-500 dark:text-gray-400 mt-0.5">{mode.desc}</p>
                 </div>
                 <ArrowRight className="h-3.5 w-3.5 opacity-0 group-hover:opacity-100 transition-opacity text-slate-400" />
               </Link>
@@ -348,7 +348,7 @@ export default function HomePage() {
       {/* ── ROUTE TEMPLATES ─────────────────────────────────────────────── */}
       <section className="py-24 mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         <FadeIn direction="up" className="mb-10">
-          <p className="text-xs text-emerald-600 font-semibold uppercase tracking-widest mb-2">Start in one click</p>
+          <p className="text-xs text-emerald-600 dark:text-emerald-400 font-semibold uppercase tracking-widest mb-2">Start in one click</p>
           <h2 className="text-3xl font-black text-slate-900 dark:text-white">Jump right in</h2>
           <p className="text-slate-500 dark:text-gray-400 mt-2">Click any template — then remix it for your exact trip.</p>
         </FadeIn>
@@ -380,9 +380,9 @@ export default function HomePage() {
       <section className="py-24 bg-gray-50 border-y border-gray-100">
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
           <FadeIn direction="up" className="text-center mb-14">
-            <p className="text-xs text-emerald-600 font-semibold uppercase tracking-widest mb-2">Real backpacker data</p>
-            <h2 className="text-3xl sm:text-4xl font-black text-slate-900 mb-4">How far does your money go?</h2>
-            <p className="text-slate-500 max-w-xl mx-auto">Verified spending data from thousands of real trips — not tourist estimates.</p>
+            <p className="text-xs text-emerald-600 dark:text-emerald-400 font-semibold uppercase tracking-widest mb-2">Real backpacker data</p>
+            <h2 className="text-3xl sm:text-4xl font-black text-slate-900 dark:text-white mb-4">How far does your money go?</h2>
+            <p className="text-slate-500 dark:text-gray-400 max-w-xl mx-auto">Verified spending data from thousands of real trips — not tourist estimates.</p>
           </FadeIn>
 
           <div className="grid grid-cols-2 lg:grid-cols-4 gap-5">
@@ -396,19 +396,19 @@ export default function HomePage() {
                 <div className="rounded-2xl border border-gray-200 bg-white p-5 hover:shadow-md transition-shadow h-full flex flex-col">
                   <div className="flex items-start justify-between mb-4">
                     <span className="text-4xl">{emoji}</span>
-                    <span className="text-xs rounded-full border border-emerald-200 bg-emerald-50 text-emerald-700 px-2 py-0.5 font-medium">{highlight}</span>
+                    <span className="text-xs rounded-full border border-emerald-200 dark:border-emerald-800 bg-emerald-50 dark:bg-emerald-900/30 text-emerald-700 dark:text-emerald-400 px-2 py-0.5 font-medium">{highlight}</span>
                   </div>
                   <h3 className="text-lg font-bold text-slate-900 dark:text-white">{country}</h3>
                   <p className="text-3xl font-black text-emerald-600 mt-1">
                     ${perDay}<span className="text-sm text-slate-400 font-normal"> /day</span>
                   </p>
                   <div className="mt-3 mb-4">
-                    <div className="h-1.5 rounded-full bg-gray-100">
+                    <div className="h-1.5 rounded-full bg-gray-100 dark:bg-gray-700">
                       <div className="h-full rounded-full bg-gradient-to-r from-emerald-500 to-emerald-400" style={{ width: `${bar}%` }} />
                     </div>
                   </div>
-                  <div className="pt-3 border-t border-gray-100 flex-1 flex flex-col justify-end">
-                    <p className="text-xs text-slate-400">2 weeks all-in:</p>
+                  <div className="pt-3 border-t border-gray-100 dark:border-gray-700 flex-1 flex flex-col justify-end">
+                    <p className="text-xs text-slate-400 dark:text-gray-500">2 weeks all-in:</p>
                     <p className="text-2xl font-black text-slate-900 dark:text-white">${weeks2}</p>
                     <Link href={`/plan?country=${slug}`}>
                       <button className="mt-3 text-xs text-brand-600 hover:text-brand-700 flex items-center gap-1 transition-colors font-medium">
@@ -434,10 +434,10 @@ export default function HomePage() {
             </p>
             <div className="space-y-4">
               {[
-                { icon: Train, label: 'Sleeper Trains',       desc: 'Vietnam Reunification Express, Bangkok–CM overnight', color: 'text-violet-600', bg: 'bg-violet-50' },
-                { icon: Ship,  label: 'Ferries & Slow Boats', desc: '2-day Mekong slow boat, island ferries',              color: 'text-cyan-600',   bg: 'bg-cyan-50' },
-                { icon: Bus,   label: 'Buses & Minivans',     desc: 'Cross-border buses, local transport',                color: 'text-blue-600',   bg: 'bg-blue-50' },
-                { icon: Plane, label: 'Budget Flights',       desc: 'AirAsia, VietJet, Scoot — the cheap ones',          color: 'text-amber-600',  bg: 'bg-amber-50' },
+                { icon: Train, label: 'Sleeper Trains',       desc: 'Vietnam Reunification Express, Bangkok–CM overnight', color: 'text-violet-600 dark:text-violet-400', bg: 'bg-violet-50 dark:bg-violet-900/20' },
+                { icon: Ship,  label: 'Ferries & Slow Boats', desc: '2-day Mekong slow boat, island ferries',              color: 'text-cyan-600 dark:text-cyan-400',   bg: 'bg-cyan-50 dark:bg-cyan-900/20' },
+                { icon: Bus,   label: 'Buses & Minivans',     desc: 'Cross-border buses, local transport',                color: 'text-blue-600 dark:text-blue-400',   bg: 'bg-blue-50 dark:bg-blue-900/20' },
+                { icon: Plane, label: 'Budget Flights',       desc: 'AirAsia, VietJet, Scoot — the cheap ones',          color: 'text-amber-600 dark:text-amber-400',  bg: 'bg-amber-50 dark:bg-amber-900/20' },
               ].map(({ icon: Icon, label, desc, color, bg }) => (
                 <div key={label} className="flex items-center gap-4 group">
                   <div className={cn('h-11 w-11 rounded-xl flex items-center justify-center flex-shrink-0 transition-transform group-hover:scale-105', bg)}>
@@ -454,7 +454,7 @@ export default function HomePage() {
 
           <FadeIn direction="left">
             <div className="relative">
-              <div className="absolute -inset-4 rounded-3xl bg-cyan-50 blur-2xl" />
+              <div className="absolute -inset-4 rounded-3xl bg-cyan-50 dark:bg-cyan-500/5 blur-2xl" />
               <div className="relative rounded-3xl border border-gray-200 bg-white p-6 space-y-3 shadow-sm">
                 <p className="text-xs text-slate-400 dark:text-gray-500 uppercase tracking-widest mb-4">Live price comparison</p>
                 {[
@@ -488,8 +488,8 @@ export default function HomePage() {
             <div className="absolute inset-0 bg-gradient-to-br from-brand-50 via-violet-50/50 to-cyan-50/50" />
             <div className="relative p-12 sm:p-16 text-center">
               <div className="text-5xl mb-6">💻</div>
-              <h2 className="text-3xl sm:text-4xl font-black text-slate-900 mb-4">Digital nomad circuits</h2>
-              <p className="text-slate-500 text-lg max-w-xl mx-auto mb-8 leading-relaxed">
+              <h2 className="text-3xl sm:text-4xl font-black text-slate-900 dark:text-white mb-4">Digital nomad circuits</h2>
+              <p className="text-slate-500 dark:text-gray-400 text-lg max-w-xl mx-auto mb-8 leading-relaxed">
                 Chiang Mai → Bali → Penang → Bangkok. Pre-built nomad circuits with coworking spaces, visa run info, and fast-internet guides.
               </p>
               <div className="flex flex-col sm:flex-row gap-4 justify-center">
@@ -529,18 +529,18 @@ export default function HomePage() {
         <div className="mx-auto max-w-5xl px-4 sm:px-6 lg:px-8">
           <FadeIn direction="up" className="text-center mb-12">
             <p className="text-xs text-brand-600 font-semibold uppercase tracking-widest mb-3">Go further with Pro</p>
-            <h2 className="text-3xl sm:text-4xl font-black text-slate-900 mb-3">
+            <h2 className="text-3xl sm:text-4xl font-black text-slate-900 dark:text-white mb-3">
               Unlimited routes. <span className="gradient-text">$4.99/month.</span>
             </h2>
-            <p className="text-slate-500 max-w-lg mx-auto">Free gets you started. Pro gets you everywhere.</p>
+            <p className="text-slate-500 dark:text-gray-400 max-w-lg mx-auto">Free gets you started. Pro gets you everywhere.</p>
           </FadeIn>
 
           <div className="grid sm:grid-cols-2 gap-6 items-center">
             <FadeIn direction="right">
               <div className="rounded-2xl border border-gray-200 bg-gray-50 p-7">
-                <p className="text-sm font-semibold text-slate-500 mb-1">Free</p>
-                <p className="text-4xl font-black text-slate-900 mb-6">$0</p>
-                <ul className="space-y-3 text-sm text-slate-500">
+                <p className="text-sm font-semibold text-slate-500 dark:text-gray-400 mb-1">Free</p>
+                <p className="text-4xl font-black text-slate-900 dark:text-white mb-6">$0</p>
+                <ul className="space-y-3 text-sm text-slate-500 dark:text-gray-400">
                   {['3 route generations per day', 'All 16 destinations', 'Budget estimates', 'Basic route sharing'].map(f => (
                     <li key={f} className="flex items-center gap-2">
                       <Check className="h-4 w-4 text-gray-300 flex-shrink-0" />{f}
@@ -561,10 +561,10 @@ export default function HomePage() {
                 </div>
                 <p className="text-sm font-semibold text-brand-600 mb-1">Nomad Pro</p>
                 <div className="flex items-end gap-2 mb-6">
-                  <p className="text-4xl font-black text-slate-900">$4.99</p>
+                  <p className="text-4xl font-black text-slate-900 dark:text-white">$4.99</p>
                   <p className="text-slate-500 text-sm mb-1">/month</p>
                 </div>
-                <ul className="space-y-3 text-sm text-slate-600">
+                <ul className="space-y-3 text-sm text-slate-600 dark:text-gray-300">
                   {PRO_FEATURES.map(f => (
                     <li key={f} className="flex items-center gap-2">
                       <Check className="h-4 w-4 text-brand-500 flex-shrink-0" />{f}
@@ -602,7 +602,7 @@ export default function HomePage() {
                 Plan my route — it's free
               </Button>
             </Link>
-            <p className="text-xs text-slate-600 mt-4">No account required · Instant results · Share your route</p>
+            <p className="text-xs text-slate-500 dark:text-gray-500 mt-4">No account required · Instant results · Share your route</p>
           </FadeIn>
         </div>
       </section>
