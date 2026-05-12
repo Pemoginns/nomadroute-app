@@ -2,6 +2,7 @@ import type { Metadata, Viewport } from 'next'
 import './globals.css'
 import { Navbar } from '@/components/layout/Navbar'
 import { Footer } from '@/components/layout/Footer'
+import { MobileBottomNav } from '@/components/layout/MobileBottomNav'
 import { ThemeProvider } from '@/components/providers/ThemeProvider'
 
 export const metadata: Metadata = {
@@ -61,8 +62,9 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
       <body className="bg-bg-base text-slate-900 dark:bg-gray-950 dark:text-slate-100 antialiased transition-colors duration-300">
         <ThemeProvider>
           <Navbar />
-          <main>{children}</main>
-          <Footer />
+          <main className="pb-16 md:pb-0">{children}</main>
+          <div className="pb-16 md:pb-0"><Footer /></div>
+          <MobileBottomNav />
         </ThemeProvider>
       </body>
     </html>

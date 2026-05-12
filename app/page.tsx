@@ -181,14 +181,14 @@ export default function HomePage() {
             </div>
 
             {/* Headline */}
-            <h1 className="text-5xl sm:text-6xl lg:text-7xl font-black tracking-tight leading-[1.05] text-white mb-6 drop-shadow-[0_2px_24px_rgba(0,0,0,0.8)]">
+            <h1 className="text-4xl sm:text-5xl lg:text-7xl font-black tracking-tight leading-[1.05] text-white mb-6 drop-shadow-[0_2px_24px_rgba(0,0,0,0.8)]">
               Every flight, train,<br />
               bus and hostel —<br />
               <span className="gradient-text">one search.</span>
             </h1>
 
             {/* Subheadline */}
-            <p className="text-lg sm:text-xl text-white max-w-2xl mx-auto mb-10 leading-relaxed">
+            <p className="text-base sm:text-xl text-white/90 max-w-2xl mx-auto mb-8 sm:mb-10 leading-relaxed drop-shadow-lg">
               Stop switching between Hostelworld, Rome2Rio, Skyscanner, and Google Maps.
               NomadRoute finds every connection, compares every price, and builds your entire
               backpacking itinerary — in one place.
@@ -385,7 +385,7 @@ export default function HomePage() {
             <p className="text-slate-500 max-w-xl mx-auto">Verified spending data from thousands of real trips — not tourist estimates.</p>
           </FadeIn>
 
-          <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-5">
+          <div className="grid grid-cols-2 lg:grid-cols-4 gap-5">
             {[
               { country: 'Vietnam',  emoji: '🇻🇳', perDay: 25, weeks2: 380, highlight: 'Best value',    bar: 62,  slug: 'vietnam' },
               { country: 'Thailand', emoji: '🇹🇭', perDay: 32, weeks2: 490, highlight: 'Most popular', bar: 80,  slug: 'thailand' },
@@ -511,7 +511,7 @@ export default function HomePage() {
           <FadeIn direction="up" className="text-center mb-10">
             <p className="text-xs text-slate-400 uppercase tracking-widest">Powered by trusted travel APIs</p>
           </FadeIn>
-          <div className="grid grid-cols-3 sm:grid-cols-6 gap-4">
+          <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-4">
             {PARTNERS.map((p, i) => (
               <FadeIn key={p.name} delay={i * 60} direction="up">
                 <div className="rounded-xl border border-gray-200 bg-white p-4 text-center hover:shadow-sm transition-shadow">
