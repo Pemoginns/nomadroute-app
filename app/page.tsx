@@ -445,7 +445,7 @@ export default function HomePage() {
                   </div>
                   <div>
                     <p className="font-semibold text-slate-900 dark:text-white text-sm">{label}</p>
-                    <p className="text-xs text-slate-500">{desc}</p>
+                    <p className="text-xs text-slate-500 dark:text-gray-400">{desc}</p>
                   </div>
                 </div>
               ))}
@@ -455,7 +455,7 @@ export default function HomePage() {
           <FadeIn direction="left">
             <div className="relative">
               <div className="absolute -inset-4 rounded-3xl bg-cyan-50 dark:bg-cyan-500/5 blur-2xl" />
-              <div className="relative rounded-3xl border border-gray-200 bg-white p-6 space-y-3 shadow-sm">
+              <div className="relative rounded-3xl border border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-800 p-6 space-y-3 shadow-sm">
                 <p className="text-xs text-slate-400 dark:text-gray-500 uppercase tracking-widest mb-4">Live price comparison</p>
                 {[
                   { from: 'Hanoi',      to: 'Hoi An',        type: '🚂 Sleeper train', duration: '16h',    price: '$18', note: 'vs $85 flight' },
@@ -464,14 +464,14 @@ export default function HomePage() {
                   { from: 'Siem Reap',  to: 'Bangkok',       type: '🚌 VIP bus',       duration: '9h',     price: '$18', note: 'vs $45 flight' },
                   { from: 'KL',         to: 'Bali',          type: '✈️ Budget flight', duration: '2.5h',   price: '$28', note: 'AirAsia' },
                 ].map(({ from, to, type, duration, price, note }) => (
-                  <div key={`${from}-${to}`} className="flex items-center gap-3 rounded-xl border border-gray-100 bg-gray-50 px-4 py-3 hover:border-gray-200 transition-colors">
+                  <div key={`${from}-${to}`} className="flex items-center gap-3 rounded-xl border border-gray-100 dark:border-gray-700 bg-gray-50 dark:bg-gray-900 px-4 py-3 hover:border-gray-200 dark:hover:border-gray-600 transition-colors">
                     <div className="flex-1 min-w-0">
                       <p className="text-sm font-semibold text-slate-900 dark:text-white truncate">{from} → {to}</p>
-                      <p className="text-xs text-slate-500">{type} · {duration}</p>
+                      <p className="text-xs text-slate-500 dark:text-gray-400">{type} · {duration}</p>
                     </div>
                     <div className="text-right flex-shrink-0">
-                      <p className="text-emerald-600 font-bold text-sm">{price}</p>
-                      <p className="text-xs text-slate-400">{note}</p>
+                      <p className="text-emerald-600 dark:text-emerald-400 font-bold text-sm">{price}</p>
+                      <p className="text-xs text-slate-400 dark:text-gray-500">{note}</p>
                     </div>
                   </div>
                 ))}
@@ -484,8 +484,8 @@ export default function HomePage() {
       {/* ── DIGITAL NOMAD CTA ────────────────────────────────────────────── */}
       <section className="py-24 mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         <FadeIn direction="up">
-          <div className="relative overflow-hidden rounded-3xl bg-white border border-gray-200 shadow-sm">
-            <div className="absolute inset-0 bg-gradient-to-br from-brand-50 via-violet-50/50 to-cyan-50/50" />
+          <div className="relative overflow-hidden rounded-3xl bg-white dark:bg-gray-900 border border-gray-200 dark:border-gray-700 shadow-sm">
+            <div className="absolute inset-0 bg-gradient-to-br from-brand-50 dark:from-brand-900/20 via-violet-50/50 dark:via-violet-900/10 to-cyan-50/50 dark:to-cyan-900/10" />
             <div className="relative p-12 sm:p-16 text-center">
               <div className="text-5xl mb-6">💻</div>
               <h2 className="text-3xl sm:text-4xl font-black text-slate-900 dark:text-white mb-4">Digital nomad circuits</h2>
@@ -509,14 +509,14 @@ export default function HomePage() {
       <section className="py-16 border-y border-gray-100 dark:border-gray-800 bg-gray-50 dark:bg-gray-900">
         <div className="mx-auto max-w-5xl px-4">
           <FadeIn direction="up" className="text-center mb-10">
-            <p className="text-xs text-slate-400 uppercase tracking-widest">Powered by trusted travel APIs</p>
+            <p className="text-xs text-slate-400 dark:text-gray-500 uppercase tracking-widest">Powered by trusted travel APIs</p>
           </FadeIn>
           <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-4">
             {PARTNERS.map((p, i) => (
               <FadeIn key={p.name} delay={i * 60} direction="up">
-                <div className="rounded-xl border border-gray-200 bg-white p-4 text-center hover:shadow-sm transition-shadow">
+                <div className="rounded-xl border border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-800 p-4 text-center hover:shadow-sm transition-shadow">
                   <p className="text-sm font-bold text-slate-700 dark:text-gray-200">{p.name}</p>
-                  <p className="text-xs text-slate-400 mt-0.5">{p.desc}</p>
+                  <p className="text-xs text-slate-400 dark:text-gray-500 mt-0.5">{p.desc}</p>
                 </div>
               </FadeIn>
             ))}
@@ -525,7 +525,7 @@ export default function HomePage() {
       </section>
 
       {/* ── PREMIUM TEASER ───────────────────────────────────────────────── */}
-      <section className="py-24 bg-white border-b border-gray-100">
+      <section className="py-24 bg-white dark:bg-gray-950 border-b border-gray-100 dark:border-gray-800">
         <div className="mx-auto max-w-5xl px-4 sm:px-6 lg:px-8">
           <FadeIn direction="up" className="text-center mb-12">
             <p className="text-xs text-brand-600 font-semibold uppercase tracking-widest mb-3">Go further with Pro</p>
@@ -537,7 +537,7 @@ export default function HomePage() {
 
           <div className="grid sm:grid-cols-2 gap-6 items-center">
             <FadeIn direction="right">
-              <div className="rounded-2xl border border-gray-200 bg-gray-50 p-7">
+              <div className="rounded-2xl border border-gray-200 dark:border-gray-700 bg-gray-50 dark:bg-gray-800 p-7">
                 <p className="text-sm font-semibold text-slate-500 dark:text-gray-400 mb-1">Free</p>
                 <p className="text-4xl font-black text-slate-900 dark:text-white mb-6">$0</p>
                 <ul className="space-y-3 text-sm text-slate-500 dark:text-gray-400">
@@ -554,7 +554,7 @@ export default function HomePage() {
             </FadeIn>
 
             <FadeIn direction="left">
-              <div className="relative rounded-2xl border-2 border-brand-400 bg-brand-50 p-7">
+              <div className="relative rounded-2xl border-2 border-brand-400 dark:border-brand-600 bg-brand-50 dark:bg-brand-950/30 p-7">
                 <div className="absolute -top-3 left-1/2 -translate-x-1/2 flex items-center gap-1.5 rounded-full bg-brand-500 px-4 py-1 text-xs font-bold text-black">
                   <Star className="h-3 w-3" />
                   Most popular
@@ -562,7 +562,7 @@ export default function HomePage() {
                 <p className="text-sm font-semibold text-brand-600 mb-1">Nomad Pro</p>
                 <div className="flex items-end gap-2 mb-6">
                   <p className="text-4xl font-black text-slate-900 dark:text-white">$4.99</p>
-                  <p className="text-slate-500 text-sm mb-1">/month</p>
+                  <p className="text-slate-500 dark:text-gray-400 text-sm mb-1">/month</p>
                 </div>
                 <ul className="space-y-3 text-sm text-slate-600 dark:text-gray-300">
                   {PRO_FEATURES.map(f => (
@@ -574,7 +574,7 @@ export default function HomePage() {
                 <Link href="/pricing" className="mt-7 block">
                   <Button variant="primary" size="md" className="w-full">Start 7-day free trial</Button>
                 </Link>
-                <p className="text-center text-xs text-slate-400 mt-2">No credit card required for trial</p>
+                <p className="text-center text-xs text-slate-400 dark:text-gray-500 mt-2">No credit card required for trial</p>
               </div>
             </FadeIn>
           </div>
@@ -592,7 +592,7 @@ export default function HomePage() {
         <div className="mx-auto max-w-3xl px-4 text-center">
           <FadeIn direction="up">
             <div className="text-6xl mb-6">🌏</div>
-            <h2 className="text-4xl sm:text-5xl font-black text-slate-900 mb-4">Ready to go?</h2>
+            <h2 className="text-4xl sm:text-5xl font-black text-slate-900 dark:text-white mb-4">Ready to go?</h2>
             <p className="text-slate-500 dark:text-gray-400 text-lg mb-8">
               Join 12,000+ backpackers who planned their SEA adventure with NomadRoute.
             </p>
