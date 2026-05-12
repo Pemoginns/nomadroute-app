@@ -229,7 +229,7 @@ export default function HomePage() {
       </section>
 
       {/* ── TRUST BAR ───────────────────────────────────────────────────── */}
-      <div className="border-y border-gray-100 bg-white py-5">
+      <div className="border-y border-gray-100 dark:border-gray-800 bg-white dark:bg-gray-900 py-5">
         <div className="mx-auto max-w-6xl px-4">
           <div className="flex flex-wrap items-center justify-center gap-6 sm:gap-10">
             {TRUST_STATS.map(({ value, label, icon: Icon }) => (
@@ -246,7 +246,7 @@ export default function HomePage() {
       </div>
 
       {/* ── MARQUEE ─────────────────────────────────────────────────────── */}
-      <div className="border-b border-gray-100 bg-gray-50 py-3 overflow-hidden">
+      <div className="border-b border-gray-100 dark:border-gray-800 bg-gray-50 dark:bg-gray-900 py-3 overflow-hidden">
         <div className="marquee-inner gap-0">
           {[...MARQUEE_ITEMS, ...MARQUEE_ITEMS].map((item, i) => (
             <span key={i} className="flex-shrink-0 flex items-center gap-2 text-sm text-slate-500 px-5">
@@ -262,7 +262,7 @@ export default function HomePage() {
       <HowItWorks />
 
       {/* ── TRUST BADGES ────────────────────────────────────────────────── */}
-      <div className="border-b border-gray-100 bg-white py-6">
+      <div className="border-b border-gray-100 dark:border-gray-800 bg-white dark:bg-gray-900 py-6">
         <div className="mx-auto max-w-4xl px-4">
           <div className="flex flex-wrap justify-center gap-8">
             {TRUST_BADGES.map(({ icon: Icon, label }) => (
@@ -315,8 +315,8 @@ export default function HomePage() {
           <div className="flex items-end justify-between mb-10">
             <div>
               <p className="text-xs text-brand-600 font-semibold uppercase tracking-widest mb-2">Most shared itineraries</p>
-              <h2 className="text-3xl sm:text-4xl font-black text-slate-900">Popular routes</h2>
-              <p className="text-slate-500 mt-2">Tried & tested by thousands of backpackers</p>
+              <h2 className="text-3xl sm:text-4xl font-black text-slate-900 dark:text-white">Popular routes</h2>
+              <p className="text-slate-500 dark:text-gray-400 mt-2">Tried & tested by thousands of backpackers</p>
             </div>
             <Link href="/routes" className="hidden sm:flex items-center gap-1.5 text-sm text-brand-600 hover:text-brand-700 transition-colors">
               View all <ArrowRight className="h-4 w-4" />
@@ -349,8 +349,8 @@ export default function HomePage() {
       <section className="py-24 mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         <FadeIn direction="up" className="mb-10">
           <p className="text-xs text-emerald-600 font-semibold uppercase tracking-widest mb-2">Start in one click</p>
-          <h2 className="text-3xl font-black text-slate-900">Jump right in</h2>
-          <p className="text-slate-500 mt-2">Click any template — then remix it for your exact trip.</p>
+          <h2 className="text-3xl font-black text-slate-900 dark:text-white">Jump right in</h2>
+          <p className="text-slate-500 dark:text-gray-400 mt-2">Click any template — then remix it for your exact trip.</p>
         </FadeIn>
 
         <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-3">
@@ -398,7 +398,7 @@ export default function HomePage() {
                     <span className="text-4xl">{emoji}</span>
                     <span className="text-xs rounded-full border border-emerald-200 bg-emerald-50 text-emerald-700 px-2 py-0.5 font-medium">{highlight}</span>
                   </div>
-                  <h3 className="text-lg font-bold text-slate-900">{country}</h3>
+                  <h3 className="text-lg font-bold text-slate-900 dark:text-white">{country}</h3>
                   <p className="text-3xl font-black text-emerald-600 mt-1">
                     ${perDay}<span className="text-sm text-slate-400 font-normal"> /day</span>
                   </p>
@@ -409,7 +409,7 @@ export default function HomePage() {
                   </div>
                   <div className="pt-3 border-t border-gray-100 flex-1 flex flex-col justify-end">
                     <p className="text-xs text-slate-400">2 weeks all-in:</p>
-                    <p className="text-2xl font-black text-slate-900">${weeks2}</p>
+                    <p className="text-2xl font-black text-slate-900 dark:text-white">${weeks2}</p>
                     <Link href={`/plan?country=${slug}`}>
                       <button className="mt-3 text-xs text-brand-600 hover:text-brand-700 flex items-center gap-1 transition-colors font-medium">
                         Plan this trip <ArrowRight className="h-3 w-3" />
@@ -428,8 +428,8 @@ export default function HomePage() {
         <div className="grid lg:grid-cols-2 gap-16 items-center">
           <FadeIn direction="right">
             <p className="text-xs text-cyan-600 font-semibold uppercase tracking-widest mb-2">Transport discovery</p>
-            <h2 className="text-3xl sm:text-4xl font-black text-slate-900 mb-6">Every way to get across Southeast Asia</h2>
-            <p className="text-slate-500 mb-8 leading-relaxed">
+            <h2 className="text-3xl sm:text-4xl font-black text-slate-900 dark:text-white mb-6">Every way to get across Southeast Asia</h2>
+            <p className="text-slate-500 dark:text-gray-400 mb-8 leading-relaxed">
               Overnight sleeper trains, legendary Mekong slow boats, budget flights — surfaced side by side with direct booking links.
             </p>
             <div className="space-y-4">
@@ -444,7 +444,7 @@ export default function HomePage() {
                     <Icon className={cn('h-5 w-5', color)} />
                   </div>
                   <div>
-                    <p className="font-semibold text-slate-900 text-sm">{label}</p>
+                    <p className="font-semibold text-slate-900 dark:text-white text-sm">{label}</p>
                     <p className="text-xs text-slate-500">{desc}</p>
                   </div>
                 </div>
@@ -456,7 +456,7 @@ export default function HomePage() {
             <div className="relative">
               <div className="absolute -inset-4 rounded-3xl bg-cyan-50 blur-2xl" />
               <div className="relative rounded-3xl border border-gray-200 bg-white p-6 space-y-3 shadow-sm">
-                <p className="text-xs text-slate-400 uppercase tracking-widest mb-4">Live price comparison</p>
+                <p className="text-xs text-slate-400 dark:text-gray-500 uppercase tracking-widest mb-4">Live price comparison</p>
                 {[
                   { from: 'Hanoi',      to: 'Hoi An',        type: '🚂 Sleeper train', duration: '16h',    price: '$18', note: 'vs $85 flight' },
                   { from: 'Bangkok',    to: 'Chiang Mai',    type: '🚂 Night train',   duration: '12h',    price: '$15', note: 'vs $60 flight' },
@@ -466,7 +466,7 @@ export default function HomePage() {
                 ].map(({ from, to, type, duration, price, note }) => (
                   <div key={`${from}-${to}`} className="flex items-center gap-3 rounded-xl border border-gray-100 bg-gray-50 px-4 py-3 hover:border-gray-200 transition-colors">
                     <div className="flex-1 min-w-0">
-                      <p className="text-sm font-semibold text-slate-900 truncate">{from} → {to}</p>
+                      <p className="text-sm font-semibold text-slate-900 dark:text-white truncate">{from} → {to}</p>
                       <p className="text-xs text-slate-500">{type} · {duration}</p>
                     </div>
                     <div className="text-right flex-shrink-0">
@@ -506,7 +506,7 @@ export default function HomePage() {
       </section>
 
       {/* ── PARTNERS ─────────────────────────────────────────────────────── */}
-      <section className="py-16 border-y border-gray-100 bg-gray-50">
+      <section className="py-16 border-y border-gray-100 dark:border-gray-800 bg-gray-50 dark:bg-gray-900">
         <div className="mx-auto max-w-5xl px-4">
           <FadeIn direction="up" className="text-center mb-10">
             <p className="text-xs text-slate-400 uppercase tracking-widest">Powered by trusted travel APIs</p>
@@ -515,7 +515,7 @@ export default function HomePage() {
             {PARTNERS.map((p, i) => (
               <FadeIn key={p.name} delay={i * 60} direction="up">
                 <div className="rounded-xl border border-gray-200 bg-white p-4 text-center hover:shadow-sm transition-shadow">
-                  <p className="text-sm font-bold text-slate-700">{p.name}</p>
+                  <p className="text-sm font-bold text-slate-700 dark:text-gray-200">{p.name}</p>
                   <p className="text-xs text-slate-400 mt-0.5">{p.desc}</p>
                 </div>
               </FadeIn>
@@ -593,7 +593,7 @@ export default function HomePage() {
           <FadeIn direction="up">
             <div className="text-6xl mb-6">🌏</div>
             <h2 className="text-4xl sm:text-5xl font-black text-slate-900 mb-4">Ready to go?</h2>
-            <p className="text-slate-500 text-lg mb-8">
+            <p className="text-slate-500 dark:text-gray-400 text-lg mb-8">
               Join 12,000+ backpackers who planned their SEA adventure with NomadRoute.
             </p>
             <Link href="/plan">

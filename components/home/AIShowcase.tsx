@@ -24,7 +24,7 @@ const AI_DEMO_LINES = [
 
 export function AIShowcase() {
   return (
-    <section className="py-24 bg-gray-50 border-y border-gray-100">
+    <section className="py-24 bg-gray-50 dark:bg-gray-900/50 border-y border-gray-100 dark:border-gray-800">
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         <div className="grid lg:grid-cols-2 gap-16 items-start">
 
@@ -35,24 +35,24 @@ export function AIShowcase() {
                 <Sparkles className="h-3.5 w-3.5" />
                 AI-powered planning engine
               </div>
-              <h2 className="text-3xl sm:text-4xl font-black text-slate-900 mb-4 leading-tight">
+              <h2 className="text-3xl sm:text-4xl font-black text-slate-900 dark:text-white mb-4 leading-tight">
                 Not just search.<br />
                 <span className="gradient-text">Intelligent planning.</span>
               </h2>
-              <p className="text-slate-500 leading-relaxed mb-8">
+              <p className="text-slate-500 dark:text-gray-400 leading-relaxed mb-8">
                 Most travel tools show you prices. NomadRoute builds your entire trip — then explains exactly why each choice saves you money.
               </p>
 
               <div className="grid grid-cols-2 gap-3 mb-8">
                 {AI_CAPABILITIES.map((cap, i) => (
                   <FadeIn key={cap.title} delay={i * 60} direction="up">
-                    <div className="rounded-xl border border-gray-200 bg-white p-4 hover:shadow-md transition-shadow">
+                    <div className="rounded-xl border border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-800 p-4 hover:shadow-md transition-shadow">
                       <div className="flex items-start justify-between mb-2">
                         <span className="text-2xl leading-none">{cap.icon}</span>
                         <span className={cn('text-xs rounded-full border px-2 py-0.5 font-medium', cap.tagColor)}>{cap.tag}</span>
                       </div>
-                      <h3 className="text-sm font-bold text-slate-900 mb-1">{cap.title}</h3>
-                      <p className="text-xs text-slate-500 leading-relaxed">{cap.desc}</p>
+                      <h3 className="text-sm font-bold text-slate-900 dark:text-white mb-1">{cap.title}</h3>
+                      <p className="text-xs text-slate-500 dark:text-gray-400 leading-relaxed">{cap.desc}</p>
                     </div>
                   </FadeIn>
                 ))}
